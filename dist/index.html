@@ -102,11 +102,10 @@
     <a href="https://instagram.com" target="_blank" rel="noopener"><span style="color:#e83d83">●</span> Instagram</a>
   </div>
   <div class="mobile-header">
-    <button id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="메뉴 열기">☰</button>
+    <span aria-hidden="true"></span>
     <div class="mobile-header-logo"><img src="./assets/logo-mark.png" alt=""><span>장애인평생교육원 꿈터글방</span></div>
     <a href="tel:0622647942" aria-label="전화 걸기">☎</a>
   </div>
-  <nav id="mobileNav" class="mobile-nav" aria-label="모바일 메뉴"><a href="#program">사업안내</a><a href="#info">이용안내</a><a href="#news">센터소식</a><a href="#donate">후원</a><a href="./about.html">센터소개</a><a href="./location.html">오시는길</a></nav>
 
   <!-- HEADER -->
   <header class="site-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid oklch(92% 0.005 230)">
@@ -117,13 +116,6 @@
         <span style="font-size:20px;font-weight:800;color:oklch(28% 0.06 230);letter-spacing:-0.4px">장애인평생교육원 꿈터글방</span>
       </div>
     </div>
-    <nav id="mainNav" class="primary-nav" aria-label="주요 메뉴" style="display:flex;flex-wrap:wrap;gap:28px;font-size:14px;font-weight:700;color:oklch(35% 0.02 230)">
-      <a href="#program" style="color:inherit">사업안내</a>
-      <a href="#info" style="color:inherit">이용안내</a>
-      <a href="#news" style="color:inherit">소식</a>
-      <a href="#donate" style="color:inherit">후원</a>
-      <a href="./about.html" style="color:inherit">센터소개</a>
-    </nav>
 <div class="header-tools" style="display:flex;align-items:center;gap:14px">
       <div class="socials" style="display:flex;gap:8px">
         <a href="https://youtube.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:oklch(55% 0.22 25);display:flex;align-items:center;justify-content:center">
@@ -148,7 +140,6 @@
         </div>
         LOGIN
       </a>
-      <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">☰</button>
     </div>
   </header>
 
@@ -310,30 +301,10 @@
 
 </div>
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
-  menuToggle?.addEventListener('click', () => {
-    const open = mainNav.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
-    menuToggle.textContent = open ? '×' : '☰';
-  });
-  mainNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    mainNav.classList.remove('open'); menuToggle?.setAttribute('aria-expanded','false');
-    if (menuToggle) menuToggle.textContent = '☰';
-  }));
   const galleryTrack = document.getElementById('galleryTrack');
   const moveGallery = direction => galleryTrack?.scrollBy({left:direction * Math.min(360, galleryTrack.clientWidth * .75),behavior:'smooth'});
   document.getElementById('galleryPrev')?.addEventListener('click', () => moveGallery(-1));
   document.getElementById('galleryNext')?.addEventListener('click', () => moveGallery(1));
-  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-  const mobileNav = document.getElementById('mobileNav');
-  mobileMenuToggle?.addEventListener('click', () => {
-    const open = mobileNav.classList.toggle('open');
-    mobileMenuToggle.setAttribute('aria-expanded', String(open));
-    mobileMenuToggle.textContent = open ? '×' : '☰';
-  });
-  mobileNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { mobileNav.classList.remove('open'); mobileMenuToggle.textContent='☰'; mobileMenuToggle.setAttribute('aria-expanded','false'); }));
 </script>
 </body>
 </html>
