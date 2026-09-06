@@ -70,12 +70,17 @@
     .video-header { justify-content:center;margin-bottom:22px!important; }
     .video-header h2 { font-size:23px!important;color:#202729!important; }
     .video-header span { width:30px!important;height:30px!important;border-radius:0!important;background:#55c6d2!important;color:#fff!important;font-size:23px!important; }
+    .video-card-title { font-size:14px!important;line-height:1.5;color:#38494e; }
+    .video-thumb { border-radius:3px;box-shadow:0 8px 22px rgba(21,52,60,.10); }
+    .play-mark { width:48px;height:34px; }
     .desktop-brand { min-width:390px; }
     .primary-nav { display:flex;align-items:center;justify-content:center;gap:clamp(38px,5vw,76px);margin-left:auto; }
     .primary-nav a { color:#26383d;font-size:18px;font-weight:900;text-shadow:0 1px 8px rgba(255,255,255,.75);white-space:nowrap; }
     .header-tools { position:absolute;right:24px;top:14px; }
-    .hero-section .hero-visual { animation:heroDrift 16s ease-in-out infinite alternate;object-position:center; }
-    .image-menu { display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0 24px 34px;background:white; }
+    .hero-section .hero-visual { animation:heroCrossfade 14s ease-in-out infinite,heroDrift 16s ease-in-out infinite alternate;object-position:center; }
+    .hero-section .hero-visual.second { animation-delay:-7s,0s; }
+    .hero-section .hero-visual.second { object-position:68% center; }
+    .image-menu { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 24px 34px;background:white; }
     .image-menu-card { position:relative;min-height:145px;overflow:hidden;border-radius:2px;color:white!important;box-shadow:0 8px 22px rgba(24,45,55,.10); }
     .image-menu-card img { width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:transform .35s ease; }
     .image-menu-card::after { content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,42,48,.08),rgba(13,42,48,.42)); }
@@ -87,6 +92,7 @@
       .primary-nav { gap:24px; }
       .primary-nav a { font-size:15px; }
       .header-tools { display:none!important; }
+      .video-grid { grid-template-columns:repeat(2,1fr); }
     }
     @media (max-width:760px) {
       body { background:white; }
@@ -126,6 +132,7 @@
       .gallery-card-title { font-size:14px!important; }
       .video-section { padding:38px 12px 42px!important; }
       .video-header h2 { font-size:20px!important; }
+      .play-mark { width:38px;height:28px; }
       .map-layout { gap:14px; }
       .image-menu { grid-template-columns:repeat(2,1fr);gap:8px;padding:0 10px 26px; }
       .image-menu-card { min-height:116px; }
@@ -159,7 +166,6 @@
     <nav class="primary-nav" aria-label="주요 메뉴">
       <a href="#program">사업안내</a>
       <a href="#news">센터소식</a>
-      <a href="#donate">후원</a>
       <a href="./about.html">센터소개</a>
     </nav>
     <div class="header-tools" style="display:flex;align-items:center;gap:14px">
@@ -191,6 +197,7 @@
 
   <!-- HERO -->
   <section class="hero-section" style="position:relative;overflow:hidden;aspect-ratio:16/7;min-height:220px">
+    <img class="hero-visual second" src="./assets/generated/hero-sprout-v2.png" alt="나무 틈에서 힘차게 자라나는 푸른 새싹">
     <img class="hero-visual" src="./assets/generated/hero-books-library-v2.png" alt="밝은 도서관의 책과 작은 화분">
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,42,48,.40) 0%,rgba(18,42,48,.18) 46%,rgba(255,255,255,.02) 72%);pointer-events:none"></div>
     <div class="hero-copy" style="position:absolute;left:10%;bottom:24%;right:5%;pointer-events:none;max-width:620px;text-shadow:0 2px 5px rgba(30,45,48,.46)">
@@ -212,10 +219,6 @@
     <a href="#info" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
       <div class="quick-icon" style="background:oklch(94% 0.05 130);color:oklch(42% 0.08 130)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 27h24M7 27V13h18v14M5 13l11-8 11 8M11 18h3v4h-3M18 18h3v4h-3"/></svg></div>
       <span style="font-size:14px;font-weight:700">시설안내</span>
-    </a>
-    <a href="#donate" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
-      <div class="quick-icon" style="background:oklch(94% 0.04 25);color:oklch(48% 0.12 25)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27S5 21 5 12.5C5 8 10.5 6 13.5 10L16 13l2.5-3C21.5 6 27 8 27 12.5 27 21 16 27 16 27z"/></svg></div>
-      <span style="font-size:14px;font-weight:700">후원안내</span>
     </a>
     <a href="#gallery" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
       <div class="quick-icon" style="background:oklch(94% 0.03 280);color:oklch(42% 0.08 280)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6h20v20H6zM10 11h12M10 15h12M10 19h7"/></svg></div>
@@ -268,10 +271,6 @@
       <img src="./assets/generated/music-class.png" alt="음악교실 수업 모습">
       <span class="image-menu-label">센터소식</span>
     </a>
-    <a class="image-menu-card" href="#donate">
-      <img src="./assets/wheelchair.png" alt="함께하는 장애인 평생교육">
-      <span class="image-menu-label">후원</span>
-    </a>
     <a class="image-menu-card" href="./about.html">
       <img src="./assets/generated/hero-learning.png" alt="꿈터글방 학습자들의 배움 모습">
       <span class="image-menu-label">센터소개</span>
@@ -297,22 +296,6 @@
         </div>
         <div style="padding:20px 0;font-size:13px;color:oklch(58% 0.01 230)">등록된 보도자료가 없습니다. 채널 확대 후 순차적으로 게시됩니다.</div>
       </div>
-    </div>
-  </section>
-
-  <!-- DONATE -->
-  <section id="donate" style="padding:32px 24px">
-    <h2 style="margin:0 0 14px;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">후원안내</h2>
-    <div style="background:oklch(96% 0.01 60);border-radius:14px;padding:24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center">
-      <div style="flex:1 1 260px">
-        <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:oklch(35% 0.04 60);line-height:1.5">장애인들의 평생교육 실현을 위한 꿈터글방의 후원자가 되어주세요</p>
-        <div style="font-size:13px;color:oklch(35% 0.02 230);line-height:1.9">
-          광주은행 1107-021-655223<br>
-          농협 351-1308-2663-43<br>
-          <span style="color:oklch(55% 0.01 230)">예금주 : 장애인평생교육원 꿈터글방</span>
-        </div>
-      </div>
-      <img src="./assets/wheelchair.png" alt="함께하는 후원을 표현한 일러스트" style="width:90px;height:110px;flex-shrink:0;border-radius:10px;object-fit:cover">
     </div>
   </section>
 
