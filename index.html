@@ -31,7 +31,7 @@
     .story-reel::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(18,35,40,.72)); pointer-events:none; }
     .story-caption { position:absolute; z-index:2; left:18px; right:18px; bottom:16px; color:white; }
     .site-shell { box-shadow:0 0 60px rgba(22,54,61,.09); }
-    .site-header { position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(18px); }
+    .site-header { position:absolute;top:0;left:0;right:0;z-index:20;background:transparent; }
     .primary-nav a { position:relative;padding:13px 0; }
     .primary-nav a::after { content:'';position:absolute;left:50%;right:50%;bottom:5px;height:2px;background:var(--teal);transition:.2s; }
     .primary-nav a:hover::after,.primary-nav a:focus-visible::after { left:0;right:0; }
@@ -56,12 +56,24 @@
     .video-card:hover img { transform:scale(1.045); }
     .play-mark { position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:29px;border-radius:8px;background:#e90018;display:grid;place-items:center;box-shadow:0 5px 14px rgba(0,0,0,.24); }
     .play-mark::after { content:'';border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid white;margin-left:2px; }
+    .desktop-brand { min-width:390px; }
+    .primary-nav { display:flex;align-items:center;justify-content:center;gap:clamp(38px,5vw,76px);margin-left:auto; }
+    .primary-nav a { color:#26383d;font-size:18px;font-weight:900;text-shadow:0 1px 8px rgba(255,255,255,.75);white-space:nowrap; }
+    .header-tools { position:absolute;right:24px;top:14px; }
+    .hero-section .hero-visual { animation:heroDrift 16s ease-in-out infinite alternate;object-position:center; }
     .image-menu { display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0 24px 34px;background:white; }
     .image-menu-card { position:relative;min-height:145px;overflow:hidden;border-radius:2px;color:white!important;box-shadow:0 8px 22px rgba(24,45,55,.10); }
     .image-menu-card img { width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:transform .35s ease; }
     .image-menu-card::after { content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,42,48,.08),rgba(13,42,48,.42)); }
     .image-menu-card:hover img { transform:scale(1.045); }
     .image-menu-label { position:absolute;z-index:2;left:0;right:0;top:50%;transform:translateY(-50%);padding:14px 10px;background:rgba(255,255,255,.84);color:#173b43;text-align:center;font-size:19px;font-weight:900;letter-spacing:-.03em;backdrop-filter:blur(3px); }
+    @media (min-width:761px) and (max-width:1050px) {
+      .desktop-brand { min-width:330px; }
+      .desktop-brand span:last-child { font-size:17px!important; }
+      .primary-nav { gap:24px; }
+      .primary-nav a { font-size:15px; }
+      .header-tools { display:none!important; }
+    }
     @media (max-width:760px) {
       body { background:white; }
       .site-shell { width:100%;box-shadow:none; }
@@ -117,15 +129,21 @@
   </div>
 
   <!-- HEADER -->
-  <header class="site-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid oklch(92% 0.005 230)">
-    <div style="display:flex;align-items:center;gap:13px">
+  <header class="site-header" style="display:flex;align-items:center;gap:28px;padding:34px 5% 18px">
+    <div class="desktop-brand" style="display:flex;align-items:center;gap:13px">
       <img src="./assets/logo-mark.png" alt="꿈터글방 로고" style="width:46px;height:46px;object-fit:contain;flex-shrink:0">
       <div style="display:flex;flex-direction:column;gap:3px;line-height:1.15">
         <span style="font-size:11px;font-weight:700;color:oklch(52% 0.08 190);letter-spacing:0.6px">사회복지법인 즐거운마을</span>
         <span style="font-size:20px;font-weight:800;color:oklch(28% 0.06 230);letter-spacing:-0.4px">장애인평생교육원 꿈터글방</span>
       </div>
     </div>
-<div class="header-tools" style="display:flex;align-items:center;gap:14px">
+    <nav class="primary-nav" aria-label="주요 메뉴">
+      <a href="#program">사업안내</a>
+      <a href="#news">센터소식</a>
+      <a href="#donate">후원</a>
+      <a href="./about.html">센터소개</a>
+    </nav>
+    <div class="header-tools" style="display:flex;align-items:center;gap:14px">
       <div class="socials" style="display:flex;gap:8px">
         <a href="https://youtube.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:oklch(55% 0.22 25);display:flex;align-items:center;justify-content:center">
           <div style="width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid white;margin-left:1px"></div>
@@ -154,13 +172,11 @@
 
   <!-- HERO -->
   <section class="hero-section" style="position:relative;overflow:hidden;aspect-ratio:16/7;min-height:220px">
-    <img class="hero-visual second" src="./assets/generated/adaptive-sports.png" alt="야외에서 함께 생활체육을 즐기는 성인 학습자들">
-    <img class="hero-visual" src="./assets/generated/hero-learning.png" alt="밝은 교실에서 함께 책을 읽으며 배우는 성인 학습자들">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg, oklch(30% 0.06 230 / 0.5), oklch(22% 0.05 230 / 0.75));pointer-events:none"></div>
-    <div class="hero-copy" style="position:absolute;left:5%;bottom:12%;right:5%;pointer-events:none;max-width:640px">
-      <div style="font-size:clamp(11px,1.2vw,13px);font-weight:700;color:oklch(85% 0.05 100);letter-spacing:1px;margin-bottom:10px">장애인평생교육원 꿈터글방</div>
-      <h1 style="margin:0 0 10px;font-size:clamp(20px,3vw,34px);line-height:1.35;font-weight:900;color:white">배움이 꿈이 되는 곳,<br class="hero-copy-break"> 함께 성장하는 꿈터글방</h1>
-      <p style="margin:0;font-size:clamp(12px,1.3vw,15px);color:oklch(92% 0.01 230);line-height:1.5">꿈을 이루는 평생교육의 즐거움을 꿈터글방에서 펼쳐보세요</p>
+    <img class="hero-visual" src="./assets/generated/hero-books-library-v2.png" alt="밝은 도서관의 책과 작은 화분">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,42,48,.40) 0%,rgba(18,42,48,.18) 46%,rgba(255,255,255,.02) 72%);pointer-events:none"></div>
+    <div class="hero-copy" style="position:absolute;left:10%;bottom:24%;right:5%;pointer-events:none;max-width:620px;text-shadow:0 2px 5px rgba(30,45,48,.46)">
+      <h1 style="margin:0 0 16px;font-size:clamp(25px,3.3vw,43px);line-height:1.35;font-weight:700;color:#d9fbff">장애인평생교육원 꿈터글방은</h1>
+      <p style="margin:0;font-size:clamp(14px,1.55vw,19px);color:white;line-height:1.65;font-weight:600">장애인의 유형 및 특성에 따라 맞춤형 교육을 제공하고<br class="hero-copy-break"> 다양한 배움의 기회를 통해 잠재된 재능을 발견하여<br class="hero-copy-break"> 자아실현을 이룰 수 있도록 지원합니다.</p>
     </div>
     <div style="position:absolute;left:5%;bottom:5%;display:flex;gap:6px">
       <span style="width:16px;height:4px;border-radius:2px;background:white"></span>
