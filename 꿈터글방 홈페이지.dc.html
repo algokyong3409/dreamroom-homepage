@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; font-family: 'Noto Sans KR', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: oklch(38% 0.09 230); text-decoration: none; }
+    a:hover { color: oklch(50% 0.14 25); }
+    * { box-sizing: border-box; }
+    @keyframes heroDrift { from { transform:scale(1.02); } to { transform:scale(1.08) translateX(-1%); } }
+    @keyframes heroCrossfade { 0%,44% { opacity:1; } 50%,94% { opacity:0; } 100% { opacity:1; } }
+    @keyframes storyFade { 0%,20% { opacity:1; } 25%,95% { opacity:0; } 100% { opacity:1; } }
+    .hero-visual { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; animation:heroCrossfade 12s ease-in-out infinite,heroDrift 14s ease-in-out infinite alternate; }
+    .hero-visual.second { animation-delay:-6s,0s; }
+    .quick-icon { width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s ease,box-shadow .2s ease; }
+    .quick-icon svg { width:31px;height:31px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
+    a:hover .quick-icon { transform:translateY(-4px);box-shadow:0 10px 22px rgba(31,72,78,.12); }
+    .story-reel { position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:14px; background:#1f2933; box-shadow:0 12px 32px rgba(24,45,55,.15); }
+    .story-reel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; animation:storyFade 16s infinite; }
+    .story-reel img:nth-child(1) { animation-delay:0s; }
+    .story-reel img:nth-child(2) { animation-delay:4s; }
+    .story-reel img:nth-child(3) { animation-delay:8s; }
+    .story-reel img:nth-child(4) { animation-delay:12s; }
+    .story-reel::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(18,35,40,.72)); pointer-events:none; }
+    .story-caption { position:absolute; z-index:2; left:18px; right:18px; bottom:16px; color:white; }
+    @media (max-width:760px) { header { padding:14px 24px!important; } header nav { order:3;width:100%;justify-content:center;gap:15px!important;font-size:13px!important;white-space:nowrap; } .hero-copy-break { display:none; } .quick-links { flex-wrap:nowrap!important;gap:9px!important;padding:24px 12px!important; } .quick-links a { flex:1;min-width:0;gap:7px!important; } .quick-links a span { font-size:11px!important;white-space:nowrap; } .quick-icon { width:56px;height:56px; } .quick-icon svg { width:26px;height:26px; } .schedule-grid { grid-template-columns:1fr!important; } }
+    @media (prefers-reduced-motion: reduce) { .hero-visual,.story-reel img { animation:none; } .hero-visual.second { display:none; } .story-reel img:first-child { opacity:1; } }
+  </style>
+</helmet>
+
+<div style="max-width:1280px;margin:0 auto;background:oklch(99% 0.002 230);min-height:100vh;position:relative">
+
+  <!-- HEADER -->
+  <header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid oklch(92% 0.005 230)">
+    <div style="display:flex;align-items:center;gap:13px">
+      <img src="./assets/logo-mark.png" alt="꿈터글방 로고" style="width:46px;height:46px;object-fit:contain;flex-shrink:0">
+      <div style="display:flex;flex-direction:column;gap:3px;line-height:1.15">
+        <span style="font-size:11px;font-weight:700;color:oklch(52% 0.08 190);letter-spacing:0.6px">사회복지법인 즐거운마을</span>
+        <span style="font-size:20px;font-weight:800;color:oklch(28% 0.06 230);letter-spacing:-0.4px">장애인평생교육원 꿈터글방</span>
+      </div>
+    </div>
+    <nav style="display:flex;flex-wrap:wrap;gap:28px;font-size:14px;font-weight:700;color:oklch(35% 0.02 230)">
+      <a href="#program" style="color:inherit">사업안내</a>
+      <a href="#info" style="color:inherit">이용안내</a>
+      <a href="#news" style="color:inherit">소식</a>
+      <a href="#donate" style="color:inherit">후원</a>
+      <a href="#about" style="color:inherit">센터소개</a>
+    </nav>
+<div style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;gap:8px">
+        <a href="https://youtube.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:oklch(55% 0.22 25);display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid white;margin-left:1px"></div>
+        </a>
+        <a href="https://pf.kakao.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:oklch(85% 0.16 95);display:flex;align-items:center;justify-content:center">
+          <div style="width:14px;height:12px;border-radius:8px 8px 8px 2px;background:oklch(30% 0.02 60)"></div>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg, oklch(70% 0.18 30), oklch(55% 0.22 350), oklch(55% 0.18 300));display:flex;align-items:center;justify-content:center">
+          <div style="width:13px;height:13px;border:1.8px solid white;border-radius:5px;position:relative">
+            <div style="position:absolute;inset:3px;border:1.6px solid white;border-radius:50%"></div>
+          </div>
+        </a>
+      </div>
+      <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:3px;color:oklch(45% 0.02 230)">
+        <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid oklch(45% 0.02 230)"></div>
+        <div style="width:13px;height:9px;background:oklch(45% 0.02 230);margin-top:-2px"></div>
+      </a>
+      <a href="#login" style="display:flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:oklch(38% 0.02 230)">
+        <div style="width:11px;height:9px;border:1.6px solid oklch(38% 0.02 230);border-radius:2px;position:relative;margin-top:2px">
+          <div style="position:absolute;top:-6px;left:1.5px;width:6px;height:6px;border:1.6px solid oklch(38% 0.02 230);border-bottom:none;border-radius:5px 5px 0 0"></div>
+        </div>
+        LOGIN
+      </a>
+      <div style="width:20px;height:20px;display:flex;flex-direction:column;gap:3px;justify-content:center">
+        <span style="display:block;width:100%;height:2px;background:oklch(30% 0.06 230)"></span>
+        <span style="display:block;width:100%;height:2px;background:oklch(30% 0.06 230)"></span>
+        <span style="display:block;width:100%;height:2px;background:oklch(30% 0.06 230)"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;overflow:hidden;aspect-ratio:16/7;min-height:220px">
+    <img class="hero-visual second" src="./assets/generated/adaptive-sports.png" alt="야외에서 함께 생활체육을 즐기는 성인 학습자들">
+    <img class="hero-visual" src="./assets/generated/hero-learning.png" alt="밝은 교실에서 함께 책을 읽으며 배우는 성인 학습자들">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, oklch(30% 0.06 230 / 0.5), oklch(22% 0.05 230 / 0.75));pointer-events:none"></div>
+    <div style="position:absolute;left:5%;bottom:12%;right:5%;pointer-events:none;max-width:640px">
+      <div style="font-size:clamp(11px,1.2vw,13px);font-weight:700;color:oklch(85% 0.05 100);letter-spacing:1px;margin-bottom:10px">장애인평생교육원 꿈터글방</div>
+      <h1 style="margin:0 0 10px;font-size:clamp(20px,3vw,34px);line-height:1.35;font-weight:900;color:white">배움이 꿈이 되는 곳,<br class="hero-copy-break"> 함께 성장하는 꿈터글방</h1>
+      <p style="margin:0;font-size:clamp(12px,1.3vw,15px);color:oklch(92% 0.01 230);line-height:1.5">꿈을 이루는 평생교육의 즐거움을 꿈터글방에서 펼쳐보세요</p>
+    </div>
+    <div style="position:absolute;left:5%;bottom:5%;display:flex;gap:6px">
+      <span style="width:16px;height:4px;border-radius:2px;background:white"></span>
+      <span style="width:16px;height:4px;border-radius:2px;background:oklch(100% 0 0 / 0.4)"></span>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="quick-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(24px,5vw,64px);padding:clamp(24px,4vw,40px) 20px;background:white">
+    <a href="#info" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(94% 0.03 210);color:oklch(38% 0.09 210)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 7.5h8a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H5zM27 7.5h-8a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3h8z"/></svg></div>
+      <span style="font-size:14px;font-weight:700">이용안내</span>
+    </a>
+    <a href="#info" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(94% 0.05 130);color:oklch(42% 0.08 130)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 27h24M7 27V13h18v14M5 13l11-8 11 8M11 18h3v4h-3M18 18h3v4h-3"/></svg></div>
+      <span style="font-size:14px;font-weight:700">시설안내</span>
+    </a>
+    <a href="#donate" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(94% 0.04 25);color:oklch(48% 0.12 25)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27S5 21 5 12.5C5 8 10.5 6 13.5 10L16 13l2.5-3C21.5 6 27 8 27 12.5 27 21 16 27 16 27z"/></svg></div>
+      <span style="font-size:14px;font-weight:700">후원안내</span>
+    </a>
+    <a href="#gallery" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(94% 0.03 280);color:oklch(42% 0.08 280)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6h20v20H6zM10 11h12M10 15h12M10 19h7"/></svg></div>
+      <span style="font-size:14px;font-weight:700">사진갤러리</span>
+    </a>
+    <a href="#about" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(94% 0.03 60);color:oklch(45% 0.09 60)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28s8-8.2 8-15a8 8 0 1 0-16 0c0 6.8 8 15 8 15z"/><circle cx="16" cy="13" r="3"/></svg></div>
+      <span style="font-size:14px;font-weight:700">오시는길</span>
+    </a>
+  </section>
+
+  <!-- PROGRAM + CONSULT CARDS -->
+  <section style="display:flex;flex-wrap:wrap;gap:20px;padding:0 24px 32px">
+    <div id="program" style="position:relative;flex:1 1 320px;min-height:220px;border-radius:14px;overflow:hidden">
+      <img src="./assets/generated/literacy-class.png" alt="한글을 함께 익히는 문해교실" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:oklch(45% 0.07 130 / 0.72);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;padding:26px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none">
+        <div>
+          <div style="font-size:18px;font-weight:900;color:white;margin-bottom:12px">사업안내</div>
+          <div style="font-size:13.5px;color:oklch(97% 0.01 130);line-height:2;font-weight:600">
+            문해교실 · 문학교실 · 미술교실<br>음악교실 · 건강교실 · 검정고시반
+          </div>
+        </div>
+        <div style="align-self:flex-start;background:white;color:oklch(45% 0.07 130);font-size:13px;font-weight:700;padding:9px 18px;border-radius:20px;pointer-events:auto;display:flex;align-items:center;gap:4px">자세히 보기 <span>&rsaquo;</span></div>
+      </div>
+    </div>
+
+    <div id="info" style="position:relative;flex:1 1 320px;min-height:220px;border-radius:14px;overflow:hidden;padding:26px;background:oklch(93% 0.03 140)">
+      <div style="position:absolute;inset:0;opacity:0.3">
+        <img src="./assets/building.png" alt="꿈터글방 기관 외경" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="position:relative">
+        <div style="font-size:17px;font-weight:900;color:oklch(30% 0.05 140);margin-bottom:10px">상담문의 및 이용시간</div>
+        <div style="font-size:22px;font-weight:900;color:oklch(50% 0.17 25);margin-bottom:10px">TEL 010-5703-2730</div>
+        <div style="font-size:13.5px;color:oklch(35% 0.03 140);line-height:1.8;font-weight:600">
+          평일 (화 ~ 금) : AM 9:00 ~ PM 2:00<br>
+          토요일, 공휴일 : 휴관
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENT PROGRAM / MONTHLY SCHEDULE -->
+  <section id="schedule" style="padding:32px 24px;background:white">
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px"><div><div style="font-size:12px;font-weight:800;color:oklch(52% 0.1 135);letter-spacing:.08em">NOW AT 꿈터글방</div><h2 style="margin:5px 0 0;font-size:21px;color:oklch(28% 0.06 230)">지금 진행 중인 배움</h2></div><span style="font-size:12px;color:oklch(55% 0.02 230)">2026년 2학기 · 9월 운영계획</span></div>
+    <div class="schedule-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;align-items:stretch">
+      <article style="display:grid;grid-template-columns:minmax(120px,.8fr) 1.2fr;border:1px solid oklch(91% 0.01 80);border-radius:16px;overflow:hidden;background:oklch(98% 0.02 75)"><img src="./assets/resources/2026-fall-program.png" alt="2026년 2학기 기초문해과정 개강 포스터" style="width:100%;height:100%;min-height:260px;object-fit:cover;object-position:top"><div style="padding:24px 20px;display:flex;flex-direction:column;justify-content:center"><span style="font-size:11px;font-weight:800;color:oklch(55% .14 40)">2026. 9. 2. — 12. 24.</span><h3 style="font-size:18px;margin:8px 0 14px;color:oklch(28% .05 55)">2학기 기초문해과정</h3><div style="display:grid;gap:9px;font-size:13px;line-height:1.45;color:oklch(35% .03 55)"><span>📖 화요일 · 세상읽기</span><span>🎵 수요일 · 음악교실</span><span>⚽ 목요일 · 뉴스포츠</span><span>✏️ 금요일 · 분반수업</span></div></div></article>
+      <article style="border:1px solid oklch(91% 0.01 145);border-radius:16px;padding:22px;background:oklch(98% .015 145)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><h3 style="margin:0;font-size:17px;color:oklch(30% .07 145)">9월 주간 시간표</h3><span style="font-size:12px;font-weight:700;color:oklch(48% .08 145)">운영 09:40~11:40</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center"><div style="background:white;border-radius:10px;padding:14px 6px"><b>화</b><span style="display:block;font-size:12px;margin-top:7px">오감톡톡</span></div><div style="background:white;border-radius:10px;padding:14px 6px"><b>수</b><span style="display:block;font-size:12px;margin-top:7px">노래교실</span></div><div style="background:white;border-radius:10px;padding:14px 6px"><b>목</b><span style="display:block;font-size:12px;margin-top:7px">도전! 놀이터</span></div><div style="background:white;border-radius:10px;padding:14px 6px"><b>금</b><span style="display:block;font-size:12px;margin-top:7px">하모니카·생활체육</span></div></div><div style="margin-top:14px;padding:12px 14px;border-radius:10px;background:oklch(95% .04 25);font-size:12px;color:oklch(45% .11 25)"><b>휴관 안내</b> · 9월 22일(화)~25일(금) 추석 연휴</div><a href="./assets/resources/2026-september-schedule.png" target="_blank" style="display:inline-flex;margin-top:14px;font-size:12px;font-weight:800;color:oklch(42% .1 145)">전체 운영계획 크게 보기 →</a></article>
+    </div>
+  </section>
+
+  <!-- NOTICE + PRESS -->
+  <section id="news" style="background:oklch(97% 0.003 230);padding:32px 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">공지사항</h2>
+          <span style="width:22px;height:22px;border-radius:50%;background:oklch(60% 0.1 200);display:flex;align-items:center;justify-content:center;font-size:13px;color:white">+</span>
+        </div>
+        <sc-for list="{{ notices }}" as="item" hint-placeholder-count="3">
+          <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid oklch(90% 0.005 230);font-size:13px">
+            <span style="color:oklch(30% 0.02 230);font-weight:500">{{ item.title }}</span>
+            <span style="color:oklch(60% 0.01 230);flex-shrink:0;margin-left:14px">{{ item.date }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">보도자료</h2>
+          <span style="width:22px;height:22px;border-radius:50%;background:oklch(60% 0.1 200);display:flex;align-items:center;justify-content:center;font-size:13px;color:white">+</span>
+        </div>
+        <div style="padding:20px 0;font-size:13px;color:oklch(58% 0.01 230)">등록된 보도자료가 없습니다. 채널 확대 후 순차적으로 게시됩니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" style="padding:32px 24px">
+    <h2 style="margin:0 0 14px;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">후원안내</h2>
+    <div style="background:oklch(96% 0.01 60);border-radius:14px;padding:24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+      <div style="flex:1 1 260px">
+        <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:oklch(35% 0.04 60);line-height:1.5">장애인들의 평생교육 실현을 위한 꿈터글방의 후원자가 되어주세요</p>
+        <div style="font-size:13px;color:oklch(35% 0.02 230);line-height:1.9">
+          광주은행 1107-021-655223<br>
+          농협 351-1308-2663-43<br>
+          <span style="color:oklch(55% 0.01 230)">예금주 : 장애인평생교육원 꿈터글방</span>
+        </div>
+      </div>
+      <img src="./assets/wheelchair.png" alt="함께하는 후원을 표현한 일러스트" style="width:90px;height:110px;flex-shrink:0;border-radius:10px;object-fit:cover">
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section id="gallery" style="padding:32px 24px;background:oklch(97% 0.003 230)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">사진갤러리</h2>
+      <div style="display:flex;gap:6px">
+        <span style="width:26px;height:26px;border-radius:50%;background:white;border:1px solid oklch(88% 0.005 230);display:flex;align-items:center;justify-content:center;font-size:12px">&larr;</span>
+        <span style="width:26px;height:26px;border-radius:50%;background:white;border:1px solid oklch(88% 0.005 230);display:flex;align-items:center;justify-content:center;font-size:12px">&rarr;</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
+      <sc-for list="{{ photos }}" as="item" hint-placeholder-count="4">
+        <div>
+          <img src="{{ item.src }}" alt="{{ item.title }}" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover;display:block">
+          <div style="font-size:12.5px;font-weight:700;color:oklch(30% 0.02 230);margin-top:8px">{{ item.title }}</div>
+          <div style="font-size:11.5px;color:oklch(58% 0.01 230);margin-top:2px">{{ item.date }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- VIDEO STORY: a lightweight, accessible animated reel built from original visual assets -->
+  <sc-if value="{{ showVideoSection }}" hint-placeholder-val="{{ true }}">
+    <section style="padding:32px 24px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+        <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">영상갤러리</h2>
+        <span style="width:20px;height:20px;border-radius:50%;background:oklch(94% 0.03 230);display:flex;align-items:center;justify-content:center;font-size:12px;color:oklch(45% 0.02 230)">+</span>
+      </div>
+      <div class="story-reel" role="img" aria-label="문해교실, 음악교실, 뉴스포츠로 이어지는 꿈터글방 활동 영상">
+        <img src="./assets/generated/hero-learning.png" alt="">
+        <img src="./assets/generated/literacy-class.png" alt="">
+        <img src="./assets/generated/music-class.png" alt="">
+        <img src="./assets/generated/adaptive-sports.png" alt="">
+        <div class="story-caption">
+          <div style="font-size:12px;font-weight:700;color:#d9f0df;letter-spacing:.08em">DREAM · LEARN · TOGETHER</div>
+          <div style="font-size:clamp(18px,2.5vw,28px);font-weight:900;margin-top:5px">배움으로 이어지는 우리의 하루</div>
+          <div style="font-size:13px;margin-top:4px;opacity:.9">문해 · 음악 · 생활체육, 꿈터글방의 따뜻한 순간들</div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ABOUT / MAP -->
+  <section id="about" style="padding:32px 24px;background:oklch(97% 0.003 230)">
+    <h2 style="margin:0 0 14px;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">오시는길</h2>
+    <img src="./assets/map.png" alt="광주광역시 북구 월동로 15 꿈터글방 위치 안내 지도" style="width:100%;height:clamp(160px,25vw,260px);object-fit:cover;border-radius:12px;display:block">
+    <div style="margin-top:14px;font-size:13.5px;color:oklch(35% 0.02 230);line-height:1.8">
+      광주광역시 북구 월동로 15 (두암동)
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding:28px 24px 36px;background:oklch(22% 0.03 230);color:oklch(78% 0.005 230);font-size:12.5px;line-height:1.9">
+    <div style="display:flex;gap:16px;margin-bottom:14px;font-size:13px;font-weight:600">
+      <a href="#" style="color:oklch(90% 0.005 230)">개인정보처리방침</a>
+      <a href="#about" style="color:oklch(90% 0.005 230)">센터소개</a>
+      <a href="#about" style="color:oklch(90% 0.005 230)">오시는길</a>
+    </div>
+    <div style="font-weight:800;color:white;margin-bottom:8px;font-size:14px">장애인평생교육원 꿈터글방</div>
+    <div>광주광역시 북구 월동로 15 (두암동)</div>
+    <div>TEL : 062-264-7942 &nbsp;&nbsp; FAX : 062-264-7942</div>
+    <div>E-MAIL : dreamroom2024@naver.com</div>
+    <div style="margin-top:8px;color:oklch(65% 0.005 230)">후원계좌 : 광주은행 1107-021-655223 / 농협 351-1308-2663-43</div>
+    <div style="margin-top:12px;color:oklch(55% 0.005 230)">Copyright ⓒ 장애인평생교육원 꿈터글방 All Rights Reserved.</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1400},&quot;showVideoSection&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;콘텐츠&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showVideoSection: this.props.showVideoSection ?? true,
+      notices: [
+        { title: "2026년 2학기 기초문해과정 개강 안내 (9/2~12/24)", date: "2026-08-20" },
+        { title: "2026년 9월 운영계획 안내", date: "2026-08-28" },
+        { title: "추석 연휴 휴관 안내 (9/22~9/25)", date: "2026-09-01" },
+      ],
+      photos: [
+        { id: "gallery-1", title: "세상읽기 (문해·독서)", date: "2026-07-10", src: "./assets/generated/literacy-class.png" },
+        { id: "gallery-2", title: "음악교실", date: "2026-07-15", src: "./assets/generated/music-class.png" },
+        { id: "gallery-3", title: "뉴스포츠", date: "2026-07-22", src: "./assets/generated/adaptive-sports.png" },
+        { id: "gallery-4", title: "2026년 2학기 프로그램", date: "2026-08-05", src: "./uploads/KakaoTalk_20260831_155146779.png" },
+        { id: "gallery-5", title: "함께 배우는 꿈터글방", date: "2026-08-12", src: "./assets/tree-reading.png" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
