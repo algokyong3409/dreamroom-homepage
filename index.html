@@ -48,11 +48,65 @@
     .map-label { font-size:12px;font-weight:900;letter-spacing:.08em;color:#6e8d40; }
     .naver-map-button { display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 18px;border-radius:12px;background:#03c75a;color:white!important;font-size:14px;font-weight:900;box-shadow:0 9px 22px rgba(3,199,90,.22);transition:.2s; }
     .naver-map-button:hover { transform:translateY(-2px);filter:brightness(.96); }
-    @media (max-width:760px) { header { padding:14px 20px!important; } .site-header .header-tools>a:not(:last-of-type),.site-header .socials { display:none!important; } .menu-toggle { display:flex; } .primary-nav { display:none!important;position:absolute;top:100%;left:0;right:0;width:100%;padding:12px 22px 18px;background:white;box-shadow:0 16px 30px rgba(15,45,52,.14);flex-direction:column;align-items:stretch;gap:0!important;font-size:15px!important; } .primary-nav.open { display:flex!important; } .primary-nav a { padding:13px 4px;border-bottom:1px solid var(--line); } .hero-copy-break { display:none; } .quick-links { flex-wrap:nowrap!important;gap:7px!important;padding:24px 10px!important; } .quick-links a { flex:1;min-width:0;gap:7px!important; } .quick-links a span { font-size:11px!important;white-space:nowrap; } .quick-icon { width:54px;height:54px; } .quick-icon svg { width:25px;height:25px; } .schedule-grid,.map-layout { grid-template-columns:1fr!important; } .gallery-track { grid-template-columns:repeat(5,78vw)!important;overflow-x:auto;padding-bottom:8px; } }
+    .mobile-social-bar,.mobile-header { display:none; }
+    .video-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }
+    .video-card { color:inherit;min-width:0; }
+    .video-thumb { position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#183943; }
+    .video-thumb img { width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease; }
+    .video-card:hover img { transform:scale(1.045); }
+    .play-mark { position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:29px;border-radius:8px;background:#e90018;display:grid;place-items:center;box-shadow:0 5px 14px rgba(0,0,0,.24); }
+    .play-mark::after { content:'';border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid white;margin-left:2px; }
+    @media (max-width:760px) {
+      body { background:white; }
+      .site-shell { width:100%;box-shadow:none; }
+      .site-header { display:none!important; }
+      .mobile-social-bar { display:grid;grid-template-columns:repeat(3,1fr);height:38px;border-bottom:1px solid #e3e7e7;background:#fafafa; }
+      .mobile-social-bar a { display:flex;align-items:center;justify-content:center;gap:6px;border-right:1px solid #e5e8e8;color:#555;font-size:12px; }
+      .mobile-header { display:grid;grid-template-columns:44px 1fr 44px;align-items:center;height:72px;padding:0 12px;background:white;position:sticky;top:0;z-index:30;border-bottom:1px solid #e7eaea; }
+      .mobile-header button,.mobile-header>a { width:40px;height:40px;border:0;border-radius:5px;background:white;display:grid;place-items:center;color:#758a96;font-size:25px; }
+      .mobile-header-logo { display:flex;align-items:center;justify-content:center;gap:7px;min-width:0; }
+      .mobile-header-logo img { width:32px;height:32px;object-fit:contain; }
+      .mobile-header-logo span { font-size:13px;font-weight:900;color:#263e47;white-space:nowrap; }
+      .mobile-nav { display:none;position:fixed;z-index:29;top:110px;left:0;right:0;background:white;padding:8px 18px 18px;box-shadow:0 18px 30px rgba(20,45,50,.18); }
+      .mobile-nav.open { display:grid; }
+      .mobile-nav a { padding:14px 6px;border-bottom:1px solid #e7eceb;font-size:15px;font-weight:800;color:#28444c; }
+      .hero-section { min-height:300px!important;aspect-ratio:auto!important; }
+      .hero-section .hero-visual { object-position:center; }
+      .hero-section .hero-copy { left:18px!important;right:18px!important;bottom:15%!important;text-align:center;max-width:none!important; }
+      .hero-section h1 { font-size:24px!important;line-height:1.35!important; }
+      .hero-copy-break { display:none; }
+      .quick-links { flex-direction:column!important;flex-wrap:nowrap!important;gap:5px!important;padding:20px 10px!important;background:white!important; }
+      .quick-links a { width:100%;min-height:58px;flex-direction:row!important;justify-content:flex-start!important;gap:18px!important;padding:7px 18px;background:#edf4f7;color:#46535a!important; }
+      .quick-links a span { font-size:16px!important;white-space:nowrap; }
+      .quick-icon { width:42px;height:42px;background:transparent!important;border-radius:0;box-shadow:none!important; }
+      .quick-icon svg { width:29px;height:29px; }
+      .schedule-grid,.map-layout { grid-template-columns:1fr!important; }
+      #schedule { display:none; }
+      #news { padding-top:34px!important;padding-bottom:34px!important; }
+      .gallery-track { display:block!important;overflow:hidden!important;padding:0!important; }
+      .gallery-track > div:not(:first-child) { display:none; }
+      .gallery-track > div:first-child { border:1px solid #e0e5e4;padding:10px;background:white; }
+      .gallery-track > div:first-child img { aspect-ratio:16/10!important;border-radius:0!important; }
+      .video-grid { grid-template-columns:repeat(2,1fr);gap:17px 12px; }
+      .video-card-title { font-size:12px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+      .map-layout { gap:14px; }
+    }
     @media (prefers-reduced-motion: reduce) { .hero-visual,.story-reel img { animation:none; } .hero-visual.second { display:none; } .story-reel img:first-child { opacity:1; } }
   </style>
 
 <div class="site-shell" style="max-width:1280px;margin:0 auto;background:oklch(99% 0.002 230);min-height:100vh;position:relative">
+
+  <div class="mobile-social-bar" aria-label="소셜 미디어">
+    <a href="https://youtube.com" target="_blank" rel="noopener"><span style="color:#e90018">●</span> Youtube</a>
+    <a href="https://pf.kakao.com" target="_blank" rel="noopener"><span style="color:#f4c900">●</span> Kakao</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener"><span style="color:#e83d83">●</span> Instagram</a>
+  </div>
+  <div class="mobile-header">
+    <button id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="메뉴 열기">☰</button>
+    <div class="mobile-header-logo"><img src="./assets/logo-mark.png" alt=""><span>장애인평생교육원 꿈터글방</span></div>
+    <a href="tel:0622647942" aria-label="전화 걸기">☎</a>
+  </div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="모바일 메뉴"><a href="#program">사업안내</a><a href="#info">이용안내</a><a href="#news">센터소식</a><a href="#donate">후원</a><a href="#about">오시는길</a></nav>
 
   <!-- HEADER -->
   <header class="site-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid oklch(92% 0.005 230)">
@@ -99,11 +153,11 @@
   </header>
 
   <!-- HERO -->
-  <section style="position:relative;overflow:hidden;aspect-ratio:16/7;min-height:220px">
+  <section class="hero-section" style="position:relative;overflow:hidden;aspect-ratio:16/7;min-height:220px">
     <img class="hero-visual second" src="./assets/generated/adaptive-sports.png" alt="야외에서 함께 생활체육을 즐기는 성인 학습자들">
     <img class="hero-visual" src="./assets/generated/hero-learning.png" alt="밝은 교실에서 함께 책을 읽으며 배우는 성인 학습자들">
     <div style="position:absolute;inset:0;background:linear-gradient(180deg, oklch(30% 0.06 230 / 0.5), oklch(22% 0.05 230 / 0.75));pointer-events:none"></div>
-    <div style="position:absolute;left:5%;bottom:12%;right:5%;pointer-events:none;max-width:640px">
+    <div class="hero-copy" style="position:absolute;left:5%;bottom:12%;right:5%;pointer-events:none;max-width:640px">
       <div style="font-size:clamp(11px,1.2vw,13px);font-weight:700;color:oklch(85% 0.05 100);letter-spacing:1px;margin-bottom:10px">장애인평생교육원 꿈터글방</div>
       <h1 style="margin:0 0 10px;font-size:clamp(20px,3vw,34px);line-height:1.35;font-weight:900;color:white">배움이 꿈이 되는 곳,<br class="hero-copy-break"> 함께 성장하는 꿈터글방</h1>
       <p style="margin:0;font-size:clamp(12px,1.3vw,15px);color:oklch(92% 0.01 230);line-height:1.5">꿈을 이루는 평생교육의 즐거움을 꿈터글방에서 펼쳐보세요</p>
@@ -254,22 +308,17 @@
     </div>
   </section>
 
-  <!-- VIDEO STORY: a lightweight, accessible animated reel built from original visual assets -->
+  <!-- VIDEO GALLERY -->
     <section style="padding:32px 24px">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
         <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">영상갤러리</h2>
         <span style="width:20px;height:20px;border-radius:50%;background:oklch(94% 0.03 230);display:flex;align-items:center;justify-content:center;font-size:12px;color:oklch(45% 0.02 230)">+</span>
       </div>
-      <div class="story-reel" role="img" aria-label="문해교실, 음악교실, 뉴스포츠로 이어지는 꿈터글방 활동 영상">
-        <img src="./assets/generated/hero-learning.png" alt="">
-        <img src="./assets/generated/literacy-class.png" alt="">
-        <img src="./assets/generated/music-class.png" alt="">
-        <img src="./assets/generated/adaptive-sports.png" alt="">
-        <div class="story-caption">
-          <div style="font-size:12px;font-weight:700;color:#d9f0df;letter-spacing:.08em">DREAM · LEARN · TOGETHER</div>
-          <div style="font-size:clamp(18px,2.5vw,28px);font-weight:900;margin-top:5px">배움으로 이어지는 우리의 하루</div>
-          <div style="font-size:13px;margin-top:4px;opacity:.9">문해 · 음악 · 생활체육, 꿈터글방의 따뜻한 순간들</div>
-        </div>
+      <div class="video-grid">
+        <a class="video-card" href="#gallery"><div class="video-thumb"><img src="./assets/generated/literacy-class.png" alt="기초문해과정 소개 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">2026년 기초문해과정 소개</div></a>
+        <a class="video-card" href="#gallery"><div class="video-thumb"><img src="./assets/generated/music-class.png" alt="음악교실 활동 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">함께 노래하는 음악교실</div></a>
+        <a class="video-card" href="#gallery"><div class="video-thumb"><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠 활동 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">신나는 뉴스포츠 교실</div></a>
+        <a class="video-card" href="#about"><div class="video-thumb"><img src="./assets/generated/hero-learning.png" alt="꿈터글방 소개 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">배움으로 이어지는 우리의 하루</div></a>
       </div>
     </section>
 
@@ -334,6 +383,14 @@
   const moveGallery = direction => galleryTrack?.scrollBy({left:direction * Math.min(360, galleryTrack.clientWidth * .75),behavior:'smooth'});
   document.getElementById('galleryPrev')?.addEventListener('click', () => moveGallery(-1));
   document.getElementById('galleryNext')?.addEventListener('click', () => moveGallery(1));
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  mobileMenuToggle?.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    mobileMenuToggle.setAttribute('aria-expanded', String(open));
+    mobileMenuToggle.textContent = open ? '×' : '☰';
+  });
+  mobileNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { mobileNav.classList.remove('open'); mobileMenuToggle.textContent='☰'; mobileMenuToggle.setAttribute('aria-expanded','false'); }));
 </script>
 </body>
 </html>
