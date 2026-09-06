@@ -80,12 +80,6 @@
     .hero-section .hero-visual { animation:heroCrossfade 14s ease-in-out infinite,heroDrift 16s ease-in-out infinite alternate;object-position:center; }
     .hero-section .hero-visual.second { animation-delay:-7s,0s; }
     .hero-section .hero-visual.second { object-position:68% center; }
-    .image-menu { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 24px 34px;background:white; }
-    .image-menu-card { position:relative;min-height:145px;overflow:hidden;border-radius:2px;color:white!important;box-shadow:0 8px 22px rgba(24,45,55,.10); }
-    .image-menu-card img { width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:transform .35s ease; }
-    .image-menu-card::after { content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,42,48,.08),rgba(13,42,48,.42)); }
-    .image-menu-card:hover img { transform:scale(1.045); }
-    .image-menu-label { position:absolute;z-index:2;left:0;right:0;top:50%;transform:translateY(-50%);padding:14px 10px;background:rgba(255,255,255,.84);color:#173b43;text-align:center;font-size:19px;font-weight:900;letter-spacing:-.03em;backdrop-filter:blur(3px); }
     @media (min-width:761px) and (max-width:1050px) {
       .desktop-brand { min-width:330px; }
       .desktop-brand span:last-child { font-size:17px!important; }
@@ -134,9 +128,6 @@
       .video-header h2 { font-size:20px!important; }
       .play-mark { width:38px;height:28px; }
       .map-layout { gap:14px; }
-      .image-menu { grid-template-columns:repeat(2,1fr);gap:8px;padding:0 10px 26px; }
-      .image-menu-card { min-height:116px; }
-      .image-menu-label { padding:11px 6px;font-size:16px; }
     }
     @media (prefers-reduced-motion: reduce) { .hero-visual,.story-reel img { animation:none; } .hero-visual.second { display:none; } .story-reel img:first-child { opacity:1; } }
   </style>
@@ -260,22 +251,6 @@
       </div>
     </div>
   </section>
-
-  <!-- IMAGE MENU -->
-  <nav class="image-menu" aria-label="주요 메뉴">
-    <a class="image-menu-card" href="#program">
-      <img src="./assets/generated/literacy-class.png" alt="기초문해 수업 모습">
-      <span class="image-menu-label">사업안내</span>
-    </a>
-    <a class="image-menu-card" href="#news">
-      <img src="./assets/generated/music-class.png" alt="음악교실 수업 모습">
-      <span class="image-menu-label">센터소식</span>
-    </a>
-    <a class="image-menu-card" href="./about.html">
-      <img src="./assets/generated/hero-learning.png" alt="꿈터글방 학습자들의 배움 모습">
-      <span class="image-menu-label">센터소개</span>
-    </a>
-  </nav>
 
   <!-- NOTICE + PRESS -->
   <section id="news" style="background:oklch(97% 0.003 230);padding:32px 24px">
