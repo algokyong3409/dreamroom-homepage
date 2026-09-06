@@ -42,6 +42,13 @@
     .gallery-track > div { scroll-snap-align:start; }
     .gallery-control { width:34px;height:34px;border-radius:50%;border:1px solid #dfe6e4;background:white;color:var(--navy);cursor:pointer;transition:.2s; }
     .gallery-control:hover { background:var(--navy);color:white;transform:translateY(-2px); }
+    .gallery-heading { font-size:24px!important;color:#4b5559!important; }
+    .gallery-controls { gap:0!important; }
+    .gallery-control { width:42px;height:42px;border-radius:0;font-size:22px; }
+    .gallery-card { background:#fff;border:1px solid #dfe5e4;padding:18px;min-width:240px; }
+    .gallery-card img { border-radius:0!important;aspect-ratio:16/10!important; }
+    .gallery-card-title { font-size:16px!important;margin-top:14px!important;color:#171c1e; }
+    .gallery-card-date { font-size:13px!important;text-align:right;margin-top:4px;color:#a0a6a8!important; }
     .map-layout { display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,.75fr);gap:22px; }
     .map-canvas { background:#eef3ed;border:1px solid #dce7e2;border-radius:18px;overflow:hidden;box-shadow:0 16px 38px rgba(20,55,61,.09); }
     .map-info-card { padding:22px;border:1px solid #e1e8e6;border-radius:16px;background:white; }
@@ -56,6 +63,10 @@
     .video-card:hover img { transform:scale(1.045); }
     .play-mark { position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:29px;border-radius:8px;background:#e90018;display:grid;place-items:center;box-shadow:0 5px 14px rgba(0,0,0,.24); }
     .play-mark::after { content:'';border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid white;margin-left:2px; }
+    .video-section { padding:48px 24px 50px!important;background:#fff; }
+    .video-header { justify-content:center;margin-bottom:22px!important; }
+    .video-header h2 { font-size:23px!important;color:#202729!important; }
+    .video-header span { width:30px!important;height:30px!important;border-radius:0!important;background:#55c6d2!important;color:#fff!important;font-size:23px!important; }
     .desktop-brand { min-width:390px; }
     .primary-nav { display:flex;align-items:center;justify-content:center;gap:clamp(38px,5vw,76px);margin-left:auto; }
     .primary-nav a { color:#26383d;font-size:18px;font-weight:900;text-shadow:0 1px 8px rgba(255,255,255,.75);white-space:nowrap; }
@@ -107,6 +118,11 @@
       .gallery-track > div:first-child img { aspect-ratio:16/10!important;border-radius:0!important; }
       .video-grid { grid-template-columns:repeat(2,1fr);gap:17px 12px; }
       .video-card-title { font-size:12px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+      .gallery-heading { font-size:20px!important; }
+      .gallery-control { width:34px;height:34px;font-size:18px; }
+      .gallery-card-title { font-size:14px!important; }
+      .video-section { padding:38px 12px 42px!important; }
+      .video-header h2 { font-size:20px!important; }
       .map-layout { gap:14px; }
       .image-menu { grid-template-columns:repeat(2,1fr);gap:8px;padding:0 10px 26px; }
       .image-menu-card { min-height:116px; }
@@ -300,24 +316,24 @@
   <!-- PHOTO GALLERY -->
   <section id="gallery" style="padding:32px 24px;background:oklch(97% 0.003 230)">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">사진갤러리</h2>
-      <div style="display:flex;gap:6px">
+      <h2 class="gallery-heading" style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">사진갤러리</h2>
+      <div class="gallery-controls" style="display:flex;gap:6px">
         <button class="gallery-control" id="galleryPrev" type="button" aria-label="이전 사진">&larr;</button>
         <button class="gallery-control" id="galleryNext" type="button" aria-label="다음 사진">&rarr;</button>
       </div>
     </div>
-    <div id="galleryTrack" class="gallery-track" style="display:grid;grid-template-columns:repeat(5,minmax(190px,1fr));gap:16px;overflow-x:auto">
-      <div><img src="./assets/generated/literacy-class.png" alt="세상읽기 문해·독서" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">세상읽기 (문해·독서)</div><div style="font-size:11.5px;color:#899397">2026-07-10</div></div>
-      <div><img src="./assets/generated/music-class.png" alt="음악교실" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">음악교실</div><div style="font-size:11.5px;color:#899397">2026-07-15</div></div>
-      <div><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">뉴스포츠</div><div style="font-size:11.5px;color:#899397">2026-07-22</div></div>
-      <div><img src="./uploads/KakaoTalk_20260831_155146779.png" alt="2학기 프로그램" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">2026년 2학기 프로그램</div><div style="font-size:11.5px;color:#899397">2026-08-05</div></div>
-      <div><img src="./assets/tree-reading.png" alt="함께 배우는 꿈터글방" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">함께 배우는 꿈터글방</div><div style="font-size:11.5px;color:#899397">2026-08-12</div></div>
+    <div id="galleryTrack" class="gallery-track" style="display:grid;grid-template-columns:repeat(5,minmax(240px,1fr));gap:16px;overflow-x:auto">
+      <div class="gallery-card"><img src="./assets/generated/literacy-class.png" alt="세상읽기 문해·독서" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div class="gallery-card-title" style="font-size:12.5px;font-weight:700;margin-top:8px">세상읽기 (문해·독서)</div><div class="gallery-card-date" style="font-size:11.5px;color:#899397">2026-07-10</div></div>
+      <div class="gallery-card"><img src="./assets/generated/music-class.png" alt="음악교실" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div class="gallery-card-title" style="font-size:12.5px;font-weight:700;margin-top:8px">음악교실</div><div class="gallery-card-date" style="font-size:11.5px;color:#899397">2026-07-15</div></div>
+      <div class="gallery-card"><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div class="gallery-card-title" style="font-size:12.5px;font-weight:700;margin-top:8px">뉴스포츠</div><div class="gallery-card-date" style="font-size:11.5px;color:#899397">2026-07-22</div></div>
+      <div class="gallery-card"><img src="./uploads/KakaoTalk_20260831_155146779.png" alt="2학기 프로그램" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div class="gallery-card-title" style="font-size:12.5px;font-weight:700;margin-top:8px">2026년 2학기 프로그램</div><div class="gallery-card-date" style="font-size:11.5px;color:#899397">2026-08-05</div></div>
+      <div class="gallery-card"><img src="./assets/tree-reading.png" alt="함께 배우는 꿈터글방" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div class="gallery-card-title" style="font-size:12.5px;font-weight:700;margin-top:8px">함께 배우는 꿈터글방</div><div class="gallery-card-date" style="font-size:11.5px;color:#899397">2026-08-12</div></div>
     </div>
   </section>
 
   <!-- VIDEO GALLERY -->
-    <section style="padding:32px 24px">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+    <section class="video-section" style="padding:32px 24px">
+      <div class="video-header" style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
         <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">영상갤러리</h2>
         <span style="width:20px;height:20px;border-radius:50%;background:oklch(94% 0.03 230);display:flex;align-items:center;justify-content:center;font-size:12px;color:oklch(45% 0.02 230)">+</span>
       </div>
