@@ -8,7 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: 'Noto Sans KR', sans-serif; -webkit-font-smoothing: antialiased; }
+    :root { --navy:#123d4a;--teal:#159b9b;--green:#6f9839;--cream:#fbfaf6;--line:#e7eceb; }
+    html { scroll-behavior:smooth; }
+    body { margin: 0; font-family: 'Noto Sans KR', sans-serif; -webkit-font-smoothing: antialiased;background:#eef2f1;color:#19343c; }
     a { color: oklch(38% 0.09 230); text-decoration: none; }
     a:hover { color: oklch(50% 0.14 25); }
     * { box-sizing: border-box; }
@@ -28,14 +30,26 @@
     .story-reel img:nth-child(4) { animation-delay:12s; }
     .story-reel::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(18,35,40,.72)); pointer-events:none; }
     .story-caption { position:absolute; z-index:2; left:18px; right:18px; bottom:16px; color:white; }
-    @media (max-width:760px) { header { padding:14px 24px!important; } header nav { order:3;width:100%;justify-content:center;gap:15px!important;font-size:13px!important;white-space:nowrap; } .hero-copy-break { display:none; } .quick-links { flex-wrap:nowrap!important;gap:9px!important;padding:24px 12px!important; } .quick-links a { flex:1;min-width:0;gap:7px!important; } .quick-links a span { font-size:11px!important;white-space:nowrap; } .quick-icon { width:56px;height:56px; } .quick-icon svg { width:26px;height:26px; } .schedule-grid { grid-template-columns:1fr!important; } }
+    .site-shell { box-shadow:0 0 60px rgba(22,54,61,.09); }
+    .site-header { position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(18px); }
+    .primary-nav a { position:relative;padding:13px 0; }
+    .primary-nav a::after { content:'';position:absolute;left:50%;right:50%;bottom:5px;height:2px;background:var(--teal);transition:.2s; }
+    .primary-nav a:hover::after,.primary-nav a:focus-visible::after { left:0;right:0; }
+    .menu-toggle { width:42px;height:42px;border:0;border-radius:12px;background:#eef5f3;color:var(--navy);display:none;align-items:center;justify-content:center;font-size:22px;cursor:pointer; }
+    .section-kicker { color:var(--green);font-size:12px;font-weight:900;letter-spacing:.12em; }
+    .gallery-track { scrollbar-width:none;scroll-snap-type:x mandatory; }
+    .gallery-track::-webkit-scrollbar { display:none; }
+    .gallery-track > div { scroll-snap-align:start; }
+    .gallery-control { width:34px;height:34px;border-radius:50%;border:1px solid #dfe6e4;background:white;color:var(--navy);cursor:pointer;transition:.2s; }
+    .gallery-control:hover { background:var(--navy);color:white;transform:translateY(-2px); }
+    @media (max-width:760px) { header { padding:14px 20px!important; } .site-header .header-tools>a:not(:last-of-type),.site-header .socials { display:none!important; } .menu-toggle { display:flex; } .primary-nav { display:none!important;position:absolute;top:100%;left:0;right:0;width:100%;padding:12px 22px 18px;background:white;box-shadow:0 16px 30px rgba(15,45,52,.14);flex-direction:column;align-items:stretch;gap:0!important;font-size:15px!important; } .primary-nav.open { display:flex!important; } .primary-nav a { padding:13px 4px;border-bottom:1px solid var(--line); } .hero-copy-break { display:none; } .quick-links { flex-wrap:nowrap!important;gap:7px!important;padding:24px 10px!important; } .quick-links a { flex:1;min-width:0;gap:7px!important; } .quick-links a span { font-size:11px!important;white-space:nowrap; } .quick-icon { width:54px;height:54px; } .quick-icon svg { width:25px;height:25px; } .schedule-grid { grid-template-columns:1fr!important; } .gallery-track { grid-template-columns:repeat(5,78vw)!important;overflow-x:auto;padding-bottom:8px; } }
     @media (prefers-reduced-motion: reduce) { .hero-visual,.story-reel img { animation:none; } .hero-visual.second { display:none; } .story-reel img:first-child { opacity:1; } }
   </style>
 
-<div style="max-width:1280px;margin:0 auto;background:oklch(99% 0.002 230);min-height:100vh;position:relative">
+<div class="site-shell" style="max-width:1280px;margin:0 auto;background:oklch(99% 0.002 230);min-height:100vh;position:relative">
 
   <!-- HEADER -->
-  <header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid oklch(92% 0.005 230)">
+  <header class="site-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid oklch(92% 0.005 230)">
     <div style="display:flex;align-items:center;gap:13px">
       <img src="./assets/logo-mark.png" alt="꿈터글방 로고" style="width:46px;height:46px;object-fit:contain;flex-shrink:0">
       <div style="display:flex;flex-direction:column;gap:3px;line-height:1.15">
@@ -43,15 +57,15 @@
         <span style="font-size:20px;font-weight:800;color:oklch(28% 0.06 230);letter-spacing:-0.4px">장애인평생교육원 꿈터글방</span>
       </div>
     </div>
-    <nav style="display:flex;flex-wrap:wrap;gap:28px;font-size:14px;font-weight:700;color:oklch(35% 0.02 230)">
+    <nav id="mainNav" class="primary-nav" aria-label="주요 메뉴" style="display:flex;flex-wrap:wrap;gap:28px;font-size:14px;font-weight:700;color:oklch(35% 0.02 230)">
       <a href="#program" style="color:inherit">사업안내</a>
       <a href="#info" style="color:inherit">이용안내</a>
       <a href="#news" style="color:inherit">소식</a>
       <a href="#donate" style="color:inherit">후원</a>
       <a href="#about" style="color:inherit">센터소개</a>
     </nav>
-<div style="display:flex;align-items:center;gap:14px">
-      <div style="display:flex;gap:8px">
+<div class="header-tools" style="display:flex;align-items:center;gap:14px">
+      <div class="socials" style="display:flex;gap:8px">
         <a href="https://youtube.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:oklch(55% 0.22 25);display:flex;align-items:center;justify-content:center">
           <div style="width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid white;margin-left:1px"></div>
         </a>
@@ -74,11 +88,7 @@
         </div>
         LOGIN
       </a>
-      <div style="width:20px;height:20px;display:flex;flex-direction:column;gap:3px;justify-content:center">
-        <span style="display:block;width:100%;height:2px;background:oklch(30% 0.06 230)"></span>
-        <span style="display:block;width:100%;height:2px;background:oklch(30% 0.06 230)"></span>
-        <span style="display:block;width:100%;height:2px;background:oklch(30% 0.06 230)"></span>
-      </div>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="메뉴 열기">☰</button>
     </div>
   </header>
 
@@ -156,7 +166,7 @@
   <!-- CURRENT PROGRAM / MONTHLY SCHEDULE -->
   <section id="schedule" style="padding:32px 24px;background:white">
     <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px">
-      <div><div style="font-size:12px;font-weight:800;color:oklch(52% 0.1 135);letter-spacing:.08em">NOW AT 꿈터글방</div><h2 style="margin:5px 0 0;font-size:21px;color:oklch(28% 0.06 230)">지금 진행 중인 배움</h2></div>
+      <div><div class="section-kicker">NOW AT 꿈터글방</div><h2 style="margin:5px 0 0;font-size:21px;color:oklch(28% 0.06 230)">지금 진행 중인 배움</h2></div>
       <span style="font-size:12px;color:oklch(55% 0.02 230)">2026년 2학기 · 9월 운영계획</span>
     </div>
     <div class="schedule-grid" style="display:grid;grid-template-columns:minmax(230px,.72fr) minmax(300px,1.28fr);gap:20px;align-items:stretch">
@@ -225,11 +235,11 @@
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">사진갤러리</h2>
       <div style="display:flex;gap:6px">
-        <span style="width:26px;height:26px;border-radius:50%;background:white;border:1px solid oklch(88% 0.005 230);display:flex;align-items:center;justify-content:center;font-size:12px">&larr;</span>
-        <span style="width:26px;height:26px;border-radius:50%;background:white;border:1px solid oklch(88% 0.005 230);display:flex;align-items:center;justify-content:center;font-size:12px">&rarr;</span>
+        <button class="gallery-control" id="galleryPrev" type="button" aria-label="이전 사진">&larr;</button>
+        <button class="gallery-control" id="galleryNext" type="button" aria-label="다음 사진">&rarr;</button>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
+    <div id="galleryTrack" class="gallery-track" style="display:grid;grid-template-columns:repeat(5,minmax(190px,1fr));gap:16px;overflow-x:auto">
       <div><img src="./assets/generated/literacy-class.png" alt="세상읽기 문해·독서" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">세상읽기 (문해·독서)</div><div style="font-size:11.5px;color:#899397">2026-07-10</div></div>
       <div><img src="./assets/generated/music-class.png" alt="음악교실" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">음악교실</div><div style="font-size:11.5px;color:#899397">2026-07-15</div></div>
       <div><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠" style="width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover"><div style="font-size:12.5px;font-weight:700;margin-top:8px">뉴스포츠</div><div style="font-size:11.5px;color:#899397">2026-07-22</div></div>
@@ -282,5 +292,23 @@
   </footer>
 
 </div>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  menuToggle?.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    menuToggle.textContent = open ? '×' : '☰';
+  });
+  mainNav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    mainNav.classList.remove('open'); menuToggle?.setAttribute('aria-expanded','false');
+    if (menuToggle) menuToggle.textContent = '☰';
+  }));
+  const galleryTrack = document.getElementById('galleryTrack');
+  const moveGallery = direction => galleryTrack?.scrollBy({left:direction * Math.min(360, galleryTrack.clientWidth * .75),behavior:'smooth'});
+  document.getElementById('galleryPrev')?.addEventListener('click', () => moveGallery(-1));
+  document.getElementById('galleryNext')?.addEventListener('click', () => moveGallery(1));
+</script>
 </body>
 </html>
