@@ -19,17 +19,28 @@
     @keyframes storyFade { 0%,20% { opacity:1; } 25%,95% { opacity:0; } 100% { opacity:1; } }
     .hero-visual { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; animation:heroCrossfade 12s ease-in-out infinite,heroDrift 14s ease-in-out infinite alternate; }
     .hero-visual.second { animation-delay:-6s,0s; }
+    .hero-arrow { position:absolute;top:50%;transform:translateY(-50%);width:92px;height:92px;border:none;background:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .25s,transform .2s;z-index:5; }
+    .hero-arrow svg { width:52px;height:52px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55)); }
+    .hero-arrow:hover { transform:translateY(-50%) scale(1.12); }
+    .hero-arrow.hero-arrow-prev { left:24px; }
+    .hero-arrow.hero-arrow-next { right:24px; }
+    .hero-section:hover .hero-arrow,.hero-arrow:focus-visible { opacity:1; }
+    @media (max-width:760px) { .hero-arrow { width:56px;height:56px; } .hero-arrow svg { width:30px;height:30px; } }
+    .btn-more:hover .btn-more-text { text-decoration:underline; }
     .quick-links { justify-content:space-between!important;gap:24px!important;padding:42px 6% 46px!important; }
     .quick-links > a { flex:1 1 0;min-width:120px; }
     .quick-links > a > span { font-size:18px!important;letter-spacing:-.03em; }
-    .quick-icon { width:112px!important;height:112px!important;border-radius:50%;background:#dce7ec!important;display:flex;align-items:center;justify-content:center;transition:transform .2s ease,box-shadow .2s ease; }
-    .quick-icon svg { position:relative;z-index:1;width:52px;height:52px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
+    .quick-icon { width:132px!important;height:132px!important;border-radius:50%;background:#d9e5ea!important;border:0;display:flex;align-items:center;justify-content:center;box-shadow:none;transition:transform .2s ease,box-shadow .2s ease; }
+    .quick-icon svg { position:relative;z-index:1;width:80px;height:80px;fill:none;stroke:currentColor;stroke-width:2.35;stroke-linecap:round;stroke-linejoin:round;filter:contrast(1.32) saturate(1.35); }
     .quick-links > a .quick-icon { position:relative;isolation:isolate; }
     .quick-links > a .quick-icon::before { content:'';position:absolute;z-index:0;width:42px;height:42px;left:-14px;top:-14px;border-radius:50%;opacity:0;transform:scale(.7);transition:opacity .2s ease,transform .2s ease; }
-    .quick-links > a:nth-child(1) .quick-icon::before { background:#77cdf7; }
-    .quick-links > a:nth-child(2) .quick-icon::before { background:#a8d96f; }
-    .quick-links > a:nth-child(3) .quick-icon::before { background:#b9a2ef; }
-    .quick-links > a:nth-child(4) .quick-icon::before { background:#ffb66f; }
+    .quick-links > a:nth-child(1) .quick-icon::before { background:#359fd6; }
+    .quick-links > a:nth-child(2) .quick-icon::before { background:#78b63d; }
+    .quick-links > a:nth-child(3) .quick-icon::before { background:#8d70d2; }
+    .quick-links > a:nth-child(4) .quick-icon::before { background:#e58b39; }
+    .quick-links > a:nth-child(5) .quick-icon::before { background:#2aa9a4; }
+    .quick-links > a:nth-child(2) .quick-icon::before,
+    .quick-links > a:nth-child(4) .quick-icon::before { left:auto;top:auto;right:-11px;bottom:-11px; }
     .quick-links > a:hover .quick-icon::before,
     .quick-links > a:focus-visible .quick-icon::before { opacity:1;transform:scale(1); }
     a:hover .quick-icon { transform:translateY(-4px);box-shadow:0 10px 22px rgba(31,72,78,.12); }
@@ -42,20 +53,36 @@
     .story-reel::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(18,35,40,.72)); pointer-events:none; }
     .story-caption { position:absolute; z-index:2; left:18px; right:18px; bottom:16px; color:white; }
     .site-shell { box-shadow:0 0 60px rgba(22,54,61,.09); }
-    .site-header { position:absolute;top:0;left:0;right:0;z-index:20;background:transparent; }
-    .primary-nav a { position:relative;padding:13px 0; }
-    .primary-nav a::after { content:'';position:absolute;left:50%;right:50%;bottom:5px;height:2px;background:var(--teal);transition:.2s; }
-    .primary-nav a:hover::after,.primary-nav a:focus-visible::after { left:0;right:0; }
+    .site-header { position:absolute;top:0;left:0;right:0;z-index:20;background:transparent;transition:background .2s ease,box-shadow .2s ease; }
+    .site-header.is-scrolled { position:fixed;background:rgba(255,255,255,.9);box-shadow:0 2px 14px rgba(20,45,50,.12);padding-top:10px!important;padding-bottom:10px!important; }
+    .site-header.is-scrolled .header-tools { display:none !important; }
+    .site-header.is-scrolled .primary-nav { transform:none !important; }
+    .primary-nav a { padding:13px 0; }
+    .nav-item::after { content:'';position:absolute;left:50%;right:50%;bottom:0;height:2px;background:#e02020;transition:.2s;pointer-events:none; }
+    .nav-item:hover::after,.nav-item:focus-within::after { left:0;right:0; }
+    .nav-item { position:relative;z-index:25;display:flex;align-items:center; }
+    .nav-drop { position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(4px);background:none;border:none;box-shadow:none;padding:8px;display:flex;flex-direction:column;gap:2px;min-width:170px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,transform .15s ease;z-index:40; }
+    .nav-item:hover .nav-drop,.nav-item:focus-within .nav-drop { opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0); }
+    .nav-overlay { position:absolute;left:0;right:0;top:0;height:370px;background:rgba(255,255,255,.9);opacity:0;visibility:hidden;transition:opacity .2s ease;pointer-events:none;z-index:15; }
+    .primary-nav:hover ~ .nav-overlay,.primary-nav:focus-within ~ .nav-overlay { opacity:1;visibility:visible; }
+    .desktop-brand { position:relative;z-index:25; }
+    .header-tools { z-index:25; }
+    .nav-drop a { position:relative;z-index:1;display:block;padding:9px 14px !important;font-size:14px !important;font-weight:700 !important;color:#33474b !important;text-shadow:none !important;white-space:nowrap;border-radius:6px; }
+    .nav-drop a:hover,.nav-drop a:focus-visible { color:#e02020 !important; }
+    .nav-drop a::after { display:none !important; }
+    .nav-drop-highlight { position:absolute;left:0;right:0;top:0;background:#fff;opacity:0;transition:opacity .12s ease;pointer-events:none;z-index:0; }
     .menu-toggle { width:42px;height:42px;border:0;border-radius:12px;background:#eef5f3;color:var(--navy);display:none;align-items:center;justify-content:center;font-size:22px;cursor:pointer; }
     .section-kicker { color:var(--green);font-size:12px;font-weight:900;letter-spacing:.12em; }
     .gallery-track { scrollbar-width:none;scroll-snap-type:x mandatory; }
     .gallery-track::-webkit-scrollbar { display:none; }
     .gallery-track > div { scroll-snap-align:start; }
     .gallery-control { width:34px;height:34px;border-radius:50%;border:1px solid #dfe6e4;background:white;color:var(--navy);cursor:pointer;transition:.2s; }
-    .gallery-control:hover { background:var(--navy);color:white;transform:translateY(-2px); }
+    .gallery-control:hover { background:#f3f6f5;color:#30373a;transform:none; }
     .gallery-heading { font-size:24px!important;color:#4b5559!important; }
     .gallery-controls { gap:0!important; }
-    .gallery-control { width:42px;height:42px;border-radius:0;font-size:22px; }
+    .gallery-control { display:grid;place-items:center;width:36px;height:36px;padding:0;border:1px solid #d9dfdd;border-radius:0;background:#fff;color:#30373a;font-family:Arial,sans-serif;font-size:21px;font-weight:900;line-height:1;box-shadow:none;text-shadow:0 0 .35px currentColor; }
+    .gallery-control svg { width:21px;height:21px;display:block;fill:none;stroke:currentColor;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round; }
+    .gallery-control + .gallery-control { border-left:0; }
     .gallery-card { background:#fff;border:1px solid #dfe5e4;padding:18px;min-width:240px; }
     .gallery-card img { border-radius:0!important;aspect-ratio:16/10!important; }
     .gallery-card-title { font-size:16px!important;margin-top:14px!important;color:#171c1e; }
@@ -77,22 +104,33 @@
     .video-section { padding:48px 24px 50px!important;background:#fff; }
     .video-header { justify-content:center;margin-bottom:22px!important; }
     .video-header h2 { font-size:23px!important;color:#202729!important; }
-    .video-header span { width:30px!important;height:30px!important;border-radius:0!important;background:#55c6d2!important;color:#fff!important;font-size:23px!important; }
+    .video-header span,.video-header .video-more-link { width:30px!important;height:30px!important;border-radius:0!important;background:#55c6d2!important;color:#fff!important;font-size:23px!important; }
     .video-card-title { font-size:14px!important;line-height:1.5;color:#38494e; }
     .video-thumb { border-radius:3px;box-shadow:0 8px 22px rgba(21,52,60,.10); }
     .play-mark { width:48px;height:34px; }
-    .desktop-brand { min-width:390px; }
-    .primary-nav { display:flex;align-items:center;justify-content:center;gap:clamp(38px,5vw,76px);margin-left:auto; }
-    .primary-nav a { color:#26383d;font-size:18px;font-weight:900;text-shadow:0 1px 8px rgba(255,255,255,.75);white-space:nowrap; }
-    .header-tools { position:absolute;right:24px;top:14px; }
+    .desktop-brand { flex-shrink:0; }
+    .primary-nav { display:grid;grid-template-columns:repeat(4,min(13.6vw,190px));align-items:center;margin-left:auto; }
+    .primary-nav .nav-item { justify-content:center; }
+    .primary-nav a { color:#26383d;font-size:20px;font-weight:900;text-shadow:none;white-space:nowrap; }
+    .header-tools { position:absolute;right:3%;top:14px; }
     .hero-section .hero-visual { animation:heroCrossfade 14s ease-in-out infinite,heroDrift 16s ease-in-out infinite alternate;object-position:center; }
     .hero-section .hero-visual.second { animation-delay:-7s,0s; }
     .hero-section .hero-visual.second { object-position:68% center; }
+    @media (min-width:761px) {
+      .site-header,.hero-section { width:100vw;margin-left:calc(50% - 50vw); }
+      .site-header { padding:38px max(calc((100vw - 1200px)/2),24px) 16px!important; }
+      .header-tools { right:max(calc((100vw - 1200px)/2),24px);top:14px; }
+      .hero-section { height:575px;min-height:575px!important;aspect-ratio:auto!important; }
+      .primary-nav { grid-template-columns:repeat(4,min(11.5vw,167.5px));transform:translateY(14px);position:relative;z-index:25; }
+      .hero-section .hero-copy { left:max(calc(50% - 560px),7%)!important;top:245px!important;right:auto!important;bottom:auto!important;max-width:620px; }
+      .hero-section .hero-copy h1 { font-size:40px!important;line-height:1.3!important; }
+      .hero-section .hero-copy p { font-size:20px!important;line-height:1.45!important; }
+    }
     @media (min-width:761px) and (max-width:1050px) {
-      .desktop-brand { min-width:330px; }
-      .desktop-brand span:last-child { font-size:17px!important; }
-      .primary-nav { gap:24px; }
-      .primary-nav a { font-size:15px; }
+      .desktop-brand { min-width:0; }
+      .desktop-brand span:last-child { font-size:15px!important; }
+      .primary-nav { grid-template-columns:repeat(4,min(9vw,120px));gap:8px; }
+      .primary-nav a { font-size:13px; }
       .header-tools { display:none!important; }
       .video-grid { grid-template-columns:repeat(2,1fr); }
     }
@@ -100,8 +138,8 @@
       body { background:white; }
       .site-shell { width:100%;box-shadow:none; }
       .site-header { display:none!important; }
-      .mobile-social-bar { display:grid;grid-template-columns:repeat(3,1fr);height:38px;border-bottom:1px solid #e3e7e7;background:#fafafa; }
-      .mobile-social-bar a { display:flex;align-items:center;justify-content:center;gap:6px;border-right:1px solid #e5e8e8;color:#555;font-size:12px; }
+      .mobile-social-bar { display:grid;grid-template-columns:repeat(4,1fr);height:38px;border-bottom:1px solid #e3e7e7;background:#fafafa; }
+      .mobile-social-bar a { display:flex;align-items:center;justify-content:center;gap:5px;border-right:1px solid #e5e8e8;color:#343a3d;font-size:12px;font-weight:800; }
       .mobile-header { display:grid;grid-template-columns:44px 1fr 44px;align-items:center;height:72px;padding:0 12px;background:white;position:sticky;top:0;z-index:30;border-bottom:1px solid #e7eaea; }
       .mobile-header button,.mobile-header>a { width:40px;height:40px;border:0;border-radius:5px;background:white;display:grid;place-items:center;color:#758a96;font-size:25px; }
       .mobile-header-logo { display:flex;align-items:center;justify-content:center;gap:7px;min-width:0; }
@@ -112,13 +150,13 @@
       .mobile-nav a { padding:14px 6px;border-bottom:1px solid #e7eceb;font-size:15px;font-weight:800;color:#28444c; }
       .hero-section { min-height:300px!important;aspect-ratio:auto!important; }
       .hero-section .hero-visual { object-position:center; }
-      .hero-section .hero-copy { left:18px!important;right:18px!important;bottom:15%!important;text-align:center;max-width:none!important; }
+      .hero-section .hero-copy { left:18px!important;right:18px!important;top:auto!important;bottom:15%!important;text-align:center;max-width:none!important; }
       .hero-section h1 { font-size:24px!important;line-height:1.35!important; }
       .hero-copy-break { display:none; }
       .quick-links { flex-direction:column!important;flex-wrap:nowrap!important;gap:5px!important;padding:20px 10px!important;background:white!important; }
       .quick-links a { width:100%;min-height:58px;flex-direction:row!important;justify-content:flex-start!important;gap:18px!important;padding:7px 18px;background:#edf4f7;color:#46535a!important; }
       .quick-links a span { font-size:16px!important;white-space:nowrap; }
-      .quick-icon { width:42px!important;height:42px!important;background:transparent!important;border-radius:0;box-shadow:none!important; }
+      .quick-icon { width:42px!important;height:42px!important;background:transparent!important;border:0;border-radius:0;box-shadow:none!important; }
       .quick-links > a .quick-icon::before { display:none; }
       .quick-icon svg { width:29px;height:29px; }
       .schedule-grid,.map-layout { grid-template-columns:1fr!important; }
@@ -138,7 +176,38 @@
       .play-mark { width:38px;height:28px; }
       .map-layout { gap:14px; }
     }
-    @media (prefers-reduced-motion: reduce) { .hero-visual,.story-reel img { animation:none; } .hero-visual.second { display:none; } .story-reel img:first-child { opacity:1; } }
+    @media (prefers-reduced-motion: reduce) { .hero-visual,.story-reel img,.hero-copy h1,.hero-copy p { animation:none; } .hero-visual.second { display:none; } .story-reel img:first-child { opacity:1; } .hero-copy h1,.hero-copy p { opacity:1; } }
+    @keyframes heroTitleUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes heroBodyIn { from { opacity:0; transform:translateX(-40px); } to { opacity:1; transform:translateX(0); } }
+    .hero-copy h1 { opacity:0; animation:heroTitleUp 2s cubic-bezier(.2,.7,.2,1) .12s forwards; }
+    .hero-copy p { opacity:0; animation:heroBodyIn .8s cubic-bezier(.2,.7,.2,1) .5s forwards; }
+    @media (min-width:761px) {
+      .quick-links { padding:42px 40px 38px!important; }
+      .quick-links > a { gap:14px!important;align-items:center!important;justify-content:flex-start!important; }
+      .quick-links > a > span { font-size:20px!important;font-weight:800!important;color:#303b40;letter-spacing:-.04em; }
+      .home-cards { gap:24px!important;padding:0 40px 44px!important;background:#fff; }
+      .home-cards > div { min-height:210px!important;border-radius:0!important; }
+      .home-cards > div:first-child > div:nth-of-type(1) { background:rgba(104,88,73,.56)!important; }
+      .home-cards > div:first-child > div:last-child { padding:28px 24px!important; }
+      .home-cards > div:first-child a { border-radius:0!important;background:rgba(112,87,65,.72)!important;color:#fff!important;padding:8px 18px!important; }
+      .home-cards #info { background:#d7ec65!important; }
+      .home-cards #info > div:first-child { opacity:.56!important;filter:saturate(1.08) contrast(1.08); }
+      .home-cards #info > div:last-child { text-shadow:0 1px 2px rgba(255,255,255,.72); }
+      #donate { display:none; }
+      #news,#gallery,.video-section { padding-left:40px!important;padding-right:40px!important; }
+      #news { padding-top:38px!important;padding-bottom:28px!important;background:#f3f7f6!important; }
+      #news > div { gap:28px!important; }
+      #news h2 { font-size:20px!important;color:#202729!important;letter-spacing:-.03em; }
+      #news h2 + a { width:24px!important;height:24px!important;font-size:20px!important; }
+      #news [style*="font-size:13px"] { font-size:14px!important;line-height:1.45; }
+      #gallery { padding-top:24px!important;padding-bottom:48px!important;background:#f3f7f6!important; }
+      .gallery-heading { font-size:21px!important;font-weight:700!important;color:#4b5559!important;letter-spacing:-.04em; }
+      .gallery-card { padding:16px!important; }
+      .gallery-card-title { font-size:15px!important;font-weight:700!important; }
+      .video-section { padding-top:46px!important;padding-bottom:52px!important; }
+      .video-header h2 { font-size:22px!important;font-weight:700!important;letter-spacing:-.04em; }
+      footer { padding-left:40px!important;padding-right:40px!important;color:#92999c!important; }
+    }
   </style>
 </head>
 <body>
@@ -146,53 +215,85 @@
 <div class="site-shell" style="max-width:1280px;margin:0 auto;background:oklch(99% 0.002 230);min-height:100vh;position:relative">
 
   <div class="mobile-social-bar" aria-label="소셜 미디어">
+    <a href="https://cafe.naver.com/" target="_blank" rel="noopener"><span style="color:#03c75a">●</span> Naver Cafe</a>
     <a href="https://youtube.com" target="_blank" rel="noopener"><span style="color:#e90018">●</span> Youtube</a>
     <a href="https://pf.kakao.com" target="_blank" rel="noopener"><span style="color:#f4c900">●</span> Kakao</a>
     <a href="https://instagram.com" target="_blank" rel="noopener"><span style="color:#e83d83">●</span> Instagram</a>
   </div>
   <div class="mobile-header">
     <span aria-hidden="true"></span>
-    <div class="mobile-header-logo"><img src="./assets/logo-mark.png" alt=""><span>장애인평생교육원 꿈터글방</span></div>
+    <div class="mobile-header-logo"><img src="./assets/logo-mark-transparent.png" alt=""><span>장애인평생교육원 꿈터글방</span></div>
     <a href="tel:0622647942" aria-label="전화 걸기">☎</a>
   </div>
 
   <!-- HEADER -->
-  <header class="site-header" style="display:flex;align-items:center;gap:28px;padding:34px 5% 18px">
+  <header class="site-header" style="display:flex;align-items:center;padding:30px 0.9% 16px 2.5%">
     <div class="desktop-brand" style="display:flex;align-items:center;gap:13px">
-      <img src="./assets/logo-mark.png" alt="꿈터글방 로고" style="width:46px;height:46px;object-fit:contain;flex-shrink:0">
+      <img src="./assets/logo-mark-transparent.png" alt="꿈터글방 로고" style="width:46px;height:46px;object-fit:contain;flex-shrink:0;filter:saturate(1.35) contrast(1.2) drop-shadow(0 2px 4px rgba(0,0,0,.58))">
       <div style="display:flex;flex-direction:column;gap:3px;line-height:1.15">
-        <span style="font-size:11px;font-weight:700;color:oklch(52% 0.08 190);letter-spacing:0.6px">사회복지법인 즐거운마을</span>
-        <span style="font-size:20px;font-weight:800;color:oklch(28% 0.06 230);letter-spacing:-0.4px">장애인평생교육원 꿈터글방</span>
+        <span style="font-size:13px;font-weight:700;color:oklch(52% 0.08 190);letter-spacing:0.6px">사회복지법인 즐거운마을</span>
+        <span style="font-size:24px;font-weight:800;color:oklch(28% 0.06 230);letter-spacing:-0.5px">장애인평생교육원 꿈터글방</span>
       </div>
     </div>
     <nav class="primary-nav" aria-label="주요 메뉴">
-      <a href="#program">사업안내</a>
-      <a href="#news">센터소식</a>
-      <a href="mailto:dreamroom2024@naver.com?subject=%ED%9B%84%EC%9B%90%20%EB%AC%B8%EC%9D%98">후원</a>
-      <a href="./about.html">센터소개</a>
+      <div class="nav-item">
+        <a href="./program.html">사업안내</a>
+        <div class="nav-drop">
+          <a href="./program.html#program">주요사업</a>
+          <a href="./program.html#usage">이용안내</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="./news.html">센터소식</a>
+        <div class="nav-drop">
+          <a href="./news.html#notice">공지사항</a>
+          <a href="./news.html#photo">사진갤러리</a>
+          <a href="./news.html#video">영상갤러리</a>
+          <a href="./news.html#press">보도자료</a>
+          <a href="./news.html#welfare">복지정보</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="./donate.html">후원</a>
+        <div class="nav-drop">
+          <a href="./donate.html#donate-guide">후원안내</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="./about.html">센터소개</a>
+        <div class="nav-drop">
+          <a href="./about.html#greeting">인사말</a>
+          <a href="./about.html#mission">미션·비전·연혁</a>
+          <a href="./about.html#org">조직도</a>
+          <a href="./about.html#corp">운영법인안내</a>
+          <a href="./about.html#facility">시설안내</a>
+          <a href="./about.html#way">오시는길</a>
+        </div>
+      </div>
     </nav>
-    <div class="header-tools" style="display:flex;align-items:center;gap:14px">
-      <div class="socials" style="display:flex;gap:8px">
-        <a href="https://youtube.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:oklch(55% 0.22 25);display:flex;align-items:center;justify-content:center">
-          <div style="width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid white;margin-left:1px"></div>
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <div class="header-tools" style="display:flex;align-items:center;gap:11px">
+      <div class="socials" style="display:flex;align-items:center;gap:6px">
+        <a href="https://cafe.naver.com/" target="_blank" rel="noopener" aria-label="네이버 카페" title="네이버 카페" style="width:24px;height:24px;border-radius:6px;background:#03c75a;color:white;display:flex;align-items:center;justify-content:center;font:900 14px/1 Arial,sans-serif;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.14)">N</a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="유튜브" title="유튜브" style="width:24px;height:24px;border-radius:6px;background:#FF0000;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.14)">
+          <svg width="17" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="4" fill="white"/><path d="M10.5 9v6l5-3-5-3z" fill="#FF0000"/></svg>
         </a>
-        <a href="https://pf.kakao.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:oklch(85% 0.16 95);display:flex;align-items:center;justify-content:center">
-          <div style="width:14px;height:12px;border-radius:8px 8px 8px 2px;background:oklch(30% 0.02 60)"></div>
+        <a href="https://pf.kakao.com" target="_blank" rel="noopener" aria-label="카카오톡" title="카카오톡" style="width:24px;height:24px;border-radius:6px;background:#FEE500;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.14)">
+          <svg width="19" height="16" viewBox="0 0 34 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17 2C8.7 2 2 7.2 2 13.6c0 4 2.6 7.5 6.6 9.6l-1.5 5.4a.6.6 0 0 0 .9.7l6.4-4.3c.85.1 1.72.16 2.6.16 8.3 0 15-5.2 15-11.6S25.3 2 17 2z" fill="#191919"/>
+            <text x="17" y="17" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="8.5" fill="#FFFFFF" style="fill:#FFFFFF!important;stroke:none!important" letter-spacing="-0.3">TALK</text>
+          </svg>
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg, oklch(70% 0.18 30), oklch(55% 0.22 350), oklch(55% 0.18 300));display:flex;align-items:center;justify-content:center">
-          <div style="width:13px;height:13px;border:1.8px solid white;border-radius:5px;position:relative">
-            <div style="position:absolute;inset:3px;border:1.6px solid white;border-radius:50%"></div>
-          </div>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램" style="width:24px;height:24px;border-radius:6px;background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.14)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.8" cy="6.2" r="1.3" fill="white"/></svg>
         </a>
       </div>
-      <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:3px;color:oklch(45% 0.02 230)">
-        <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid oklch(45% 0.02 230)"></div>
-        <div style="width:13px;height:9px;background:oklch(45% 0.02 230);margin-top:-2px"></div>
+      <a href="./index.html" style="display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:800;color:#1a1a1a">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#1a1a1a" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3.2 3 11h2.2v9.5h5.3v-6.2h3v6.2h5.3V11H21L12 3.2z"/></svg>
+        홈
       </a>
-      <a href="#login" style="display:flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:oklch(38% 0.02 230)">
-        <div style="width:11px;height:9px;border:1.6px solid oklch(38% 0.02 230);border-radius:2px;position:relative;margin-top:2px">
-          <div style="position:absolute;top:-6px;left:1.5px;width:6px;height:6px;border:1.6px solid oklch(38% 0.02 230);border-bottom:none;border-radius:5px 5px 0 0"></div>
-        </div>
+      <a href="#login" style="display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:800;color:#1a1a1a">
+        <svg width="11" height="13" viewBox="0 0 24 24" fill="#1a1a1a" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3H9z"/></svg>
         LOGIN
       </a>
     </div>
@@ -200,67 +301,111 @@
 
   <!-- HERO -->
   <section class="hero-section" style="position:relative;overflow:hidden;aspect-ratio:16/7;min-height:220px">
-    <img class="hero-visual second" src="./assets/generated/hero-sprout-v2.png" alt="나무 틈에서 힘차게 자라나는 푸른 새싹">
+    <img class="hero-visual second" src="./assets/generated/hero-sprout-clear-v8.png" alt="나무 틈에서 선명하고 푸르게 자라나는 새싹">
     <img class="hero-visual" src="./assets/generated/hero-books-library-v2.png" alt="밝은 도서관의 책과 작은 화분">
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,42,48,.40) 0%,rgba(18,42,48,.18) 46%,rgba(255,255,255,.02) 72%);pointer-events:none"></div>
-    <div class="hero-copy" style="position:absolute;left:10%;bottom:24%;right:5%;pointer-events:none;max-width:620px;text-shadow:0 2px 5px rgba(30,45,48,.46)">
-      <h1 style="margin:0 0 16px;font-size:clamp(25px,3.3vw,43px);line-height:1.35;font-weight:700;color:#d9fbff">장애인평생교육원 꿈터글방은</h1>
-      <p style="margin:0;font-size:clamp(14px,1.55vw,19px);color:white;line-height:1.65;font-weight:600">장애인의 유형 및 특성에 따라 맞춤형 교육을 제공하고<br class="hero-copy-break"> 다양한 배움의 기회를 통해 잠재된 재능을 발견하여<br class="hero-copy-break"> 자아실현을 이룰 수 있도록 지원합니다.</p>
+    <div class="hero-copy" style="position:absolute;left:15.5%;top:43%;right:5%;pointer-events:none;max-width:620px;text-shadow:0 2px 5px rgba(30,45,48,.46)">
+      <h1 style="margin:0 0 13px;font-size:clamp(25px,3.05vw,40px);line-height:1.3;font-weight:700;color:#9bcfd8;text-shadow:none">장애인평생교육원 꿈터글방은</h1>
+      <p style="margin:0;font-size:clamp(14px,1.45vw,20px);color:white;line-height:1.45;font-weight:600">장애인의 유형 및 특성에 따라 맞춤형 교육을 제공하고<br class="hero-copy-break"> 다양한 배움의 기회를 통해 잠재된 재능을 발견하여<br class="hero-copy-break"> 자아실현을 이룰 수 있도록 지원합니다.</p>
     </div>
-    <div style="position:absolute;left:5%;bottom:5%;display:flex;gap:6px">
-      <span style="width:16px;height:4px;border-radius:2px;background:white"></span>
-      <span style="width:16px;height:4px;border-radius:2px;background:oklch(100% 0 0 / 0.4)"></span>
+    <button type="button" class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="이전 이미지"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="hero-arrow hero-arrow-next" id="heroNext" aria-label="다음 이미지"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div style="position:absolute;left:50%;bottom:5%;transform:translateX(-50%);display:flex;gap:8px" id="heroDots">
+      <span class="hero-dot" style="width:56px;height:8px;border-radius:4px;background:#6fdcf5"></span>
+      <span class="hero-dot" style="width:56px;height:8px;border-radius:4px;background:white"></span>
     </div>
   </section>
 
   <!-- QUICK LINKS -->
   <section class="quick-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(24px,5vw,64px);padding:clamp(24px,4vw,40px) 20px;background:white">
-    <a href="#info" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
-      <div class="quick-icon" style="background:oklch(94% 0.03 210);color:oklch(38% 0.09 210)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 7.5h8a3 3 0 0 1 3 3v15a3 3 0 0 0-3-3H5zM27 7.5h-8a3 3 0 0 0-3 3v15a3 3 0 0 1 3-3h8z"/></svg></div>
+    <a href="./program.html#usage" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(95% 0.006 230)"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path style="stroke:oklch(66% 0.17 20)" d="M7 8.5h5.4a2 2 0 1 1 3.8 0h.3a1.5 1.5 0 0 1 1.5 1.5v.3a2 2 0 1 0 0 3.8V17H7.5a1.5 1.5 0 0 1-1.5-1.5V10a1.5 1.5 0 0 1 1.5-1.5z"/>
+        <path style="stroke:oklch(70% 0.1 224)" d="M25 23.5h-5.4a2 2 0 1 1-3.8 0h-.3a1.5 1.5 0 0 1-1.5-1.5v-.3a2 2 0 1 0 0-3.8V15h9.5a1.5 1.5 0 0 1 1.5 1.5V22a1.5 1.5 0 0 1-1.5 1.5z"/>
+      </svg></div>
       <span style="font-size:14px;font-weight:700">이용안내</span>
     </a>
-    <a href="#info" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
-      <div class="quick-icon" style="background:oklch(94% 0.05 130);color:oklch(42% 0.08 130)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 27h24M7 27V13h18v14M5 13l11-8 11 8M11 18h3v4h-3M18 18h3v4h-3"/></svg></div>
+    <a href="./about.html#facility" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(95% 0.006 230)"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path style="stroke:oklch(52% 0.01 230)" d="M5 13l11-7 11 7M5 13h22M6 25h20"/>
+        <path style="stroke:oklch(66% 0.17 20)" d="M10.5 14v11M17.5 14v11"/>
+        <path style="stroke:oklch(70% 0.1 224)" d="M14 14v11M21 14v11"/>
+      </svg></div>
       <span style="font-size:14px;font-weight:700">시설안내</span>
     </a>
-    <a href="#gallery" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
-      <div class="quick-icon" style="background:oklch(94% 0.03 280);color:oklch(42% 0.08 280)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6h20v20H6zM10 11h12M10 15h12M10 19h7"/></svg></div>
-      <span style="font-size:14px;font-weight:700">사진갤러리</span>
+    <a href="./donate.html" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(95% 0.006 230)"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path style="stroke:oklch(52% 0.01 230)" d="M7 21c-.8 2.6 1 5.2 3.6 5.2 1.4 0 2.6-.6 3.4-1.6M25 21c.8 2.6-1 5.2-3.6 5.2-1.4 0-2.6-.6-3.4-1.6"/>
+        <path style="stroke:oklch(66% 0.17 20)" fill="oklch(66% 0.17 20 / 0.14)" d="M16 19.5s-5.6-3.4-5.6-7.1a3.1 3.1 0 0 1 5.6-2 3.1 3.1 0 0 1 5.6 2c0 3.7-5.6 7.1-5.6 7.1z"/>
+      </svg></div>
+      <span style="font-size:14px;font-weight:700">후원안내</span>
+    </a>
+    <a href="./news.html#press" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
+      <div class="quick-icon" style="background:oklch(95% 0.006 230)"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path style="stroke:oklch(52% 0.01 230)" d="M7 9.5h15v15a1.8 1.8 0 0 1-1.8 1.8H8.8A1.8 1.8 0 0 1 7 24.5z"/>
+        <path style="stroke:oklch(52% 0.01 230)" d="M22 9.5l3.3 3.3H22z"/>
+        <path style="stroke:oklch(66% 0.17 20)" stroke-width="2.2" d="M10 14h6"/>
+        <path style="stroke:oklch(70% 0.1 224)" d="M10 18h9"/>
+        <path style="stroke:oklch(52% 0.01 230)" d="M10 21.5h9M10 24.5h5.5"/>
+      </svg></div>
+      <span style="font-size:14px;font-weight:700">보도자료</span>
     </a>
     <a href="./location.html" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:oklch(35% 0.02 230)">
-      <div class="quick-icon" style="background:oklch(94% 0.03 60);color:oklch(45% 0.09 60)"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28s8-8.2 8-15a8 8 0 1 0-16 0c0 6.8 8 15 8 15z"/><circle cx="16" cy="13" r="3"/></svg></div>
+      <div class="quick-icon" style="background:oklch(95% 0.006 230)"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path style="stroke:oklch(52% 0.01 230)" d="M6 25l4-11h12l4 11z"/>
+        <path style="stroke:oklch(52% 0.01 230)" d="M17 25V17M7.5 20.7h17"/>
+        <path style="stroke:oklch(70% 0.1 224)" d="M16 7a4.6 4.6 0 0 1 4.6 4.6c0 3.6-4.6 8.4-4.6 8.4s-4.6-4.8-4.6-8.4A4.6 4.6 0 0 1 16 7z"/>
+        <circle style="fill:oklch(66% 0.17 20)" cx="16" cy="11.6" r="1.8"/>
+      </svg></div>
       <span style="font-size:14px;font-weight:700">오시는길</span>
     </a>
   </section>
 
   <!-- PROGRAM + CONSULT CARDS -->
-  <section style="display:flex;flex-wrap:wrap;gap:20px;padding:0 24px 32px">
+  <section class="home-cards" style="display:flex;flex-wrap:wrap;gap:20px;padding:0 24px 32px">
     <div id="program" style="position:relative;flex:1 1 320px;min-height:220px;border-radius:14px;overflow:hidden">
       <img src="./assets/generated/literacy-class.png" alt="한글을 함께 익히는 문해교실" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
       <div style="position:absolute;inset:0;background:oklch(45% 0.07 130 / 0.72);pointer-events:none"></div>
       <div style="position:absolute;inset:0;padding:26px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none">
         <div>
           <div style="font-size:18px;font-weight:900;color:white;margin-bottom:12px">사업안내</div>
-          <div style="font-size:13.5px;color:oklch(97% 0.01 130);line-height:2;font-weight:600">
-            문해교실 · 문학교실 · 미술교실<br>음악교실 · 건강교실 · 검정고시반
+          <div style="font-size:13.5px;color:oklch(97% 0.01 130);line-height:1.5;font-weight:600">
+            장애인평생교육과정<br>장애인평생교육과정 특징<br>주요프로그램
           </div>
         </div>
-        <div style="align-self:flex-start;background:white;color:oklch(45% 0.07 130);font-size:13px;font-weight:700;padding:9px 18px;border-radius:20px;pointer-events:auto;display:flex;align-items:center;gap:4px">자세히 보기 <span>&rsaquo;</span></div>
+        <a href="./program.html" class="btn-more" style="align-self:flex-start;background:white;color:oklch(45% 0.07 130);font-size:13px;font-weight:700;padding:9px 18px;border-radius:20px;pointer-events:auto;display:flex;align-items:center;gap:4px"><span class="btn-more-text">자세히 보기</span> <span>&rsaquo;</span></a>
       </div>
     </div>
 
     <div id="info" style="position:relative;flex:1 1 320px;min-height:220px;border-radius:14px;overflow:hidden;padding:26px;background:oklch(93% 0.03 140)">
       <div style="position:absolute;inset:0;opacity:0.3">
-        <img src="./assets/building.png" alt="꿈터글방 기관 외경" style="width:100%;height:100%;object-fit:cover">
+        <img src="./assets/building-front-hq.jpg" alt="꿈터글방 정면 출입구 전경" style="width:100%;height:100%;object-fit:cover">
       </div>
       <div style="position:relative">
         <div style="font-size:17px;font-weight:900;color:oklch(30% 0.05 140);margin-bottom:10px">상담문의 및 이용시간</div>
-        <div style="font-size:22px;font-weight:900;color:oklch(50% 0.17 25);margin-bottom:10px">TEL 010-5703-2730</div>
+        <div style="font-size:22px;font-weight:900;color:oklch(45% 0.18 25);margin-bottom:6px">TEL 062-264-7942</div>
+        <div style="font-size:15px;font-weight:800;color:oklch(32% 0.05 140);margin-bottom:9px">H.P 010-4607-0855</div>
         <div style="font-size:13.5px;color:oklch(35% 0.03 140);line-height:1.8;font-weight:600">
           평일 (화 ~ 금) : AM 9:00 ~ PM 2:00<br>
           토요일, 공휴일 : 휴관
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" style="padding:0 24px 32px">
+    <div style="background:oklch(96% 0.01 60);border-radius:14px;padding:26px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <div style="flex:1 1 300px">
+        <div style="font-size:17px;font-weight:900;color:oklch(30% 0.05 60);margin-bottom:8px">후원안내</div>
+        <p style="margin:0 0 12px;font-size:13.5px;font-weight:700;color:oklch(35% 0.04 60);line-height:1.6">장애인들의 평생교육 실현을 위한 꿈터글방의 후원자가 되어주세요</p>
+        <div style="font-size:13px;color:oklch(35% 0.02 230);line-height:1.9">
+          광주은행 1107-021-655223<br>
+          농협 351-1308-2663-43<br>
+          <span style="color:oklch(55% 0.01 230)">예금주 : 장애인평생교육원 꿈터글방</span>
+        </div>
+      </div>
+      <a href="./donate.html" class="btn-more" style="flex-shrink:0;background:white;color:oklch(45% 0.1 60);font-size:13px;font-weight:700;padding:11px 20px;border-radius:20px;display:flex;align-items:center;gap:4px"><span class="btn-more-text">자세히 보기</span> <span>&rsaquo;</span></a>
     </div>
   </section>
 
@@ -270,16 +415,16 @@
       <div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:12px;border-bottom:2px solid #657176">
           <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">공지사항</h2>
-          <span style="width:28px;height:28px;background:#55c6d2;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:400;line-height:1;color:white">+</span>
+          <a href="./news.html#notice" style="width:28px;height:28px;background:#55c6d2;display:flex;align-items:center;justify-content:center;color:white"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg></a>
         </div>
-        <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid oklch(90% 0.005 230);font-size:13px"><span style="font-weight:500">2026년 2학기 기초문해과정 개강 안내</span><span style="color:#899397">2026-08-20</span></div>
-        <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid oklch(90% 0.005 230);font-size:13px"><span style="font-weight:500">2026년 9월 운영계획 안내</span><span style="color:#899397">2026-08-28</span></div>
-        <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid oklch(90% 0.005 230);font-size:13px"><span style="font-weight:500">추석 연휴 휴관 안내</span><span style="color:#899397">2026-09-01</span></div>
+        <a href="./notice-2026-2hakgi.html" style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid oklch(90% 0.005 230);font-size:13px;color:inherit"><span style="font-weight:500">2026년 2학기 기초문해과정 개강 안내</span><span style="color:#899397">2026-08-20</span></a>
+        <a href="./notice-2026-09-plan.html" style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid oklch(90% 0.005 230);font-size:13px;color:inherit"><span style="font-weight:500">2026년 9월 운영계획 안내</span><span style="color:#899397">2026-08-28</span></a>
+        <a href="./notice-2026-chuseok.html" style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid oklch(90% 0.005 230);font-size:13px;color:inherit"><span style="font-weight:500">추석 연휴 휴관 안내</span><span style="color:#899397">2026-09-01</span></a>
       </div>
       <div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:12px;border-bottom:2px solid #657176">
           <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">보도자료</h2>
-          <span style="width:28px;height:28px;background:#55c6d2;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:400;line-height:1;color:white">+</span>
+          <a href="./news.html#press" style="width:28px;height:28px;background:#55c6d2;display:flex;align-items:center;justify-content:center;color:white"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg></a>
         </div>
         <div style="padding:20px 0;font-size:13px;color:oklch(58% 0.01 230)">등록된 보도자료가 없습니다. 채널 확대 후 순차적으로 게시됩니다.</div>
       </div>
@@ -291,8 +436,8 @@
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <h2 class="gallery-heading" style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">사진갤러리</h2>
       <div class="gallery-controls" style="display:flex;gap:6px">
-        <button class="gallery-control" id="galleryPrev" type="button" aria-label="이전 사진">&larr;</button>
-        <button class="gallery-control" id="galleryNext" type="button" aria-label="다음 사진">&rarr;</button>
+        <button class="gallery-control" id="galleryPrev" type="button" aria-label="이전 사진"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="gallery-control" id="galleryNext" type="button" aria-label="다음 사진"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
     <div id="galleryTrack" class="gallery-track" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;overflow-x:auto">
@@ -307,18 +452,18 @@
     <section class="video-section" style="padding:32px 24px">
       <div class="video-header" style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
         <h2 style="margin:0;font-size:17px;font-weight:900;color:oklch(30% 0.06 230)">영상갤러리</h2>
-        <span style="width:20px;height:20px;border-radius:50%;background:oklch(94% 0.03 230);display:flex;align-items:center;justify-content:center;font-size:12px;color:oklch(45% 0.02 230)">+</span>
+        <a class="video-more-link" href="./news.html#video" aria-label="영상갤러리 전체보기" title="영상갤러리 전체보기" style="width:20px;height:20px;border-radius:50%;background:oklch(94% 0.03 230);display:flex;align-items:center;justify-content:center;font-size:12px;color:oklch(45% 0.02 230);text-decoration:none">+</a>
       </div>
       <div class="video-grid">
-        <a class="video-card" href="#gallery"><div class="video-thumb"><img src="./assets/generated/literacy-class.png" alt="기초문해과정 소개 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">2026년 기초문해과정 소개</div></a>
-        <a class="video-card" href="#gallery"><div class="video-thumb"><img src="./assets/generated/music-class.png" alt="음악교실 활동 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">함께 노래하는 음악교실</div></a>
-        <a class="video-card" href="#gallery"><div class="video-thumb"><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠 활동 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">신나는 뉴스포츠 교실</div></a>
-        <a class="video-card" href="#gallery"><div class="video-thumb"><img src="./assets/generated/hero-learning.png" alt="꿈터글방 소개 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">배움으로 이어지는 우리의 하루</div></a>
+        <a class="video-card" href="./news.html#video"><div class="video-thumb"><img src="./assets/generated/literacy-class.png" alt="기초문해과정 소개 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">2026년 기초문해과정 소개</div></a>
+        <a class="video-card" href="./news.html#video"><div class="video-thumb"><img src="./assets/generated/music-class.png" alt="음악교실 활동 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">함께 노래하는 음악교실</div></a>
+        <a class="video-card" href="./news.html#video"><div class="video-thumb"><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠 활동 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">신나는 뉴스포츠 교실</div></a>
+        <a class="video-card" href="./news.html#video"><div class="video-thumb"><img src="./assets/generated/hero-learning.png" alt="꿈터글방 소개 영상 미리보기"><span class="play-mark"></span></div><div class="video-card-title" style="font-size:13px;font-weight:700;margin-top:9px">배움으로 이어지는 우리의 하루</div></a>
       </div>
     </section>
 
   <!-- FOOTER -->
-  <footer style="padding:34px max(24px,calc((100% - 1080px)/2)) 42px;background:#fff;border-top:1px solid #e4e8e7;color:#858b8e;font-size:13px;line-height:1.75">
+  <footer style="padding:34px max(24px,calc((100% - 1080px)/2)) 42px;background:#f5f7f7;border-top:1px solid #e4e8e7;color:#858b8e;font-size:13px;line-height:1.75">
     <nav aria-label="하단 메뉴" style="display:flex;gap:24px;margin-bottom:24px;font-size:15px">
       <a href="./privacy.html" style="color:#26383d;font-weight:900">개인정보처리방침</a>
       <a href="./about.html" style="color:#7f878a">센터소개</a>
@@ -326,7 +471,7 @@
     </nav>
     <div style="display:flex;flex-wrap:wrap;gap:8px 28px">
       <span>장애인평생교육원 꿈터글방</span>
-      <span>광주광역시 북구 월동로 15 (두암동)</span>
+      <span>광주광역시 북구 월동로 15(두암동)</span>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:8px 26px">
       <span>TEL : 062-264-7942</span>
@@ -338,10 +483,57 @@
 
 </div>
 <script>
+  (() => {
+    const siteHeader = document.querySelector('.site-header');
+    if (!siteHeader) return;
+    const onScroll = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
   const galleryTrack = document.getElementById('galleryTrack');
   const moveGallery = direction => galleryTrack?.scrollBy({left:direction * Math.min(360, galleryTrack.clientWidth * .75),behavior:'smooth'});
   document.getElementById('galleryPrev')?.addEventListener('click', () => moveGallery(-1));
   document.getElementById('galleryNext')?.addEventListener('click', () => moveGallery(1));
+
+  (() => {
+    const heroSection = document.querySelector('.hero-section');
+    const heroVisuals = heroSection ? Array.from(heroSection.querySelectorAll('.hero-visual')) : [];
+    const heroDots = document.querySelectorAll('#heroDots .hero-dot');
+    let heroIndex = 0;
+    let heroLocked = false;
+    const showHero = next => {
+      heroIndex = (next + heroVisuals.length) % heroVisuals.length;
+      if (!heroLocked) {
+        heroLocked = true;
+        heroVisuals.forEach(v => { v.style.animation = 'none'; });
+      }
+      heroVisuals.forEach((v, idx) => { v.style.opacity = idx === heroIndex ? '1' : '0'; });
+      heroDots.forEach((d, idx) => { d.style.background = idx === heroIndex ? '#6fdcf5' : 'white'; });
+    };
+    document.getElementById('heroPrev')?.addEventListener('click', () => showHero(heroIndex - 1));
+    document.getElementById('heroNext')?.addEventListener('click', () => showHero(heroIndex + 1));
+  })();
+
+  (() => {
+    const overlay = document.querySelector('.nav-overlay');
+    if (!overlay) return;
+    document.querySelectorAll('.nav-drop').forEach(drop => {
+      const highlight = document.createElement('div');
+      highlight.className = 'nav-drop-highlight';
+      drop.appendChild(highlight);
+      drop.querySelectorAll('a').forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          const dropRect = drop.getBoundingClientRect();
+          const overlayRect = overlay.getBoundingClientRect();
+          highlight.style.height = Math.max(overlayRect.bottom - dropRect.top, 0) + 'px';
+          highlight.style.opacity = '1';
+        });
+        link.addEventListener('mouseleave', () => { highlight.style.opacity = '0'; });
+      });
+    });
+  })();
 </script>
+<script src="./assets/admin-login.js" defer></script>
 </body>
 </html>

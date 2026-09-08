@@ -1,0 +1,28 @@
+@media (min-width:701px){
+  .site-header{height:110px;padding:0 max(calc((100% - 1200px)/2),24px)}
+  .header-top{position:absolute;right:max(calc((100% - 1200px)/2),24px);top:5px;height:30px;margin:0;padding:0;gap:12px}
+  .header-top a{color:#fff;font-size:12.8px;font-weight:700;text-shadow:0 1px 5px rgba(0,0,0,.72)}
+  .header-main{height:110px;display:block}
+  .desktop-brand{position:absolute;left:max(calc((100% - 1200px)/2),24px);top:40px;gap:13px;max-width:44%}
+  .desktop-brand img{width:46px;height:46px;filter:saturate(1.35) contrast(1.2) drop-shadow(0 2px 4px rgba(0,0,0,.58));flex-shrink:0}
+  .primary-nav{position:absolute;right:max(calc((100% - 1200px)/2),24px);top:40px;left:auto;display:grid;grid-template-columns:repeat(4,min(11vw,165px))}
+  .primary-nav a{height:70px;padding:0;color:#fff;font-size:min(2vw,22.4px);font-weight:800;line-height:70px;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 12px rgba(0,0,0,.42);white-space:nowrap}
+  .nav-drop a{height:auto;line-height:normal;text-align:left}
+  .hero{height:360px;min-height:360px;padding:0;display:block;background-position:center;background-size:cover}
+  .hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.07);pointer-events:none}
+  .hero>div{position:absolute;z-index:1;left:50%;top:180px;width:min(1200px,calc(100% - 48px));transform:translateX(-50%);text-align:center}
+  .hero small{display:none}
+  .hero h1{font-size:38.4px;font-weight:800;line-height:61.44px;margin:0;color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.38)}
+  .crumb{height:26px;margin-top:18.5px;font-size:14.4px;font-weight:700;line-height:23px;justify-content:center;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+  .tabs{width:min(1200px,calc(100% - 48px));max-width:none;height:40px;margin:30px auto 0;padding:0;display:flex;justify-content:center;gap:6px}
+  .tab-btn{flex:0 0 158px;width:158px;height:40px;padding:0;border-radius:0;font-size:17.6px;font-weight:400;line-height:40px;box-shadow:none}
+  .content{width:min(1200px,calc(100% - 48px));max-width:none;margin:30px auto 0;padding:30px 0 80px}
+  .content h2,.panel h2{font-size:32px;line-height:51.2px;font-weight:400;margin-top:0;text-align:center}
+}
+@media (min-width:701px) and (max-width:1050px){
+  .desktop-brand .b2{font-size:19px!important}
+  .desktop-brand .b1{font-size:11px!important}
+  .primary-nav{grid-template-columns:repeat(4,min(9vw,120px));gap:6px}
+  .primary-nav a{font-size:13px!important}
+  .header-top{display:none!important}
+}

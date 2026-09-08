@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>사업안내 | 꿈터글방</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Noto Sans KR',sans-serif;color:#29434a;background:#fff}
+a{color:inherit;text-decoration:none}
+:root{--teal:#159b9b}
+.mobile-head{display:none}
+.site-header{position:absolute;top:0;left:0;right:0;z-index:20;height:110px;padding:0 max(calc((100% - 1200px)/2),24px);transition:background .2s ease,box-shadow .2s ease}
+.site-header.is-scrolled{position:fixed;background:rgba(255,255,255,.9);box-shadow:0 2px 14px rgba(20,45,50,.12);height:64px!important}
+.site-header.is-scrolled .desktop-brand{top:9px!important}
+.site-header.is-scrolled .primary-nav{top:9px!important}
+.site-header.is-scrolled .desktop-brand .b1{color:#2c6b45!important;text-shadow:none!important}
+.site-header.is-scrolled .desktop-brand .b2{color:#17343d!important;text-shadow:none!important}
+.site-header.is-scrolled .primary-nav a{color:#26383d!important;text-shadow:none!important;height:46px!important;line-height:46px!important}
+.site-header.is-scrolled .header-top{display:none!important}
+.header-top{position:absolute;right:max(calc((100% - 1200px)/2),24px);top:5px;display:flex;justify-content:flex-end;align-items:center;gap:12px;margin:0;height:30px}
+.header-top .socials{display:flex;gap:6px}
+.header-top a{color:#666;font-size:12.8px;font-weight:400;display:flex;align-items:center;gap:4px;text-shadow:none}
+.header-main{height:110px}
+.desktop-brand{position:absolute;left:max(calc((100% - 1200px)/2),24px);top:40px;display:flex;align-items:center;gap:13px;flex-shrink:0;z-index:25}
+.header-top{z-index:25}
+.desktop-brand img{width:46px;height:46px;object-fit:contain}
+.desktop-brand .btxt{display:flex;flex-direction:column;gap:2px;line-height:1.15}
+.desktop-brand .b1{font-size:13px;font-weight:700;color:oklch(52% 0.08 190)!important;text-shadow:none!important;letter-spacing:.6px}
+.desktop-brand .b2{font-size:24px;font-weight:800;color:oklch(28% 0.06 230)!important;text-shadow:none!important;letter-spacing:-.5px}
+.primary-nav{position:absolute;left:calc(50% - 70px);top:40px;z-index:25;display:grid;grid-template-columns:repeat(4,165px);align-items:center;justify-content:center}
+.primary-nav .nav-item{justify-content:center}
+.primary-nav > .nav-item > a{color:#26383d!important;text-shadow:none!important}
+.primary-nav a{height:70px;padding:0;color:#333;font-size:22.4px;font-weight:500;line-height:70px;text-align:center;text-shadow:none;white-space:nowrap}
+.nav-item::after{content:'';position:absolute;left:50%;right:50%;bottom:0;height:2px;background:#e02020;transition:.2s;pointer-events:none}
+.nav-item:hover::after,.nav-item:focus-within::after{left:0;right:0}
+.nav-item{position:relative;z-index:25;display:flex;align-items:center}
+.nav-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(4px);background:none;border:none;box-shadow:none;padding:8px;display:flex;flex-direction:column;gap:2px;min-width:170px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease,transform .15s ease;z-index:40}
+.nav-item:hover .nav-drop,.nav-item:focus-within .nav-drop{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-overlay{position:absolute;left:0;right:0;top:0;height:370px;background:rgba(255,255,255,.9);opacity:0;visibility:hidden;transition:opacity .2s ease;pointer-events:none;z-index:15}
+.primary-nav:hover ~ .nav-overlay,.primary-nav:focus-within ~ .nav-overlay{opacity:1;visibility:visible}
+@media (max-width:700px){ .nav-overlay{display:none} }
+.nav-drop a{position:relative;z-index:1;display:block;height:auto;line-height:normal;text-align:left;padding:9px 14px!important;font-size:14px!important;font-weight:700!important;color:#33474b!important;text-shadow:none!important;white-space:nowrap;border-radius:6px}
+.nav-drop a:hover,.nav-drop a:focus-visible{color:#e02020!important}
+.nav-drop a::after{display:none!important}
+.nav-drop-highlight{position:absolute;left:0;right:0;top:0;background:#fff;opacity:0;transition:opacity .12s ease;pointer-events:none;z-index:0}
+.hero{position:relative;height:360px;min-height:360px;background:linear-gradient(90deg,rgba(14,49,59,.38),rgba(14,49,59,.14)),url('./assets/generated/literacy-class.png') center/cover;border-bottom:1px solid #e3e9e7;color:#fff}
+.hero>div{position:absolute;left:50%;top:180px;width:1200px;transform:translateX(-50%);text-align:center}
+.hero small{display:none}
+.hero h1{font-size:38.4px;font-weight:600;line-height:61.44px;margin:0}
+.crumb{height:26px;margin-top:18.5px;font-size:14.4px;line-height:23px;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px}
+.crumb span.sep{opacity:.6}
+.tabs{width:1200px;height:40px;margin:30px auto 0;padding:0;display:flex;justify-content:center;gap:6px}
+.tab-btn{width:158px;height:40px;text-align:center;padding:0;background:#fff;border:1px solid #dde5e3;border-radius:0;font-size:17.6px;font-weight:400;line-height:40px;color:#555;cursor:pointer;box-shadow:none;transition:.15s}
+.tab-btn:hover{border-color:#159b9b}
+.tab-btn.active{background:#159b9b;border-color:#159b9b;color:#fff}
+.content{width:1200px;max-width:none;margin:30px auto 0;padding:30px 0 80px}
+.panel{display:none}
+.panel.active{display:block}
+.panel h2{font-size:32px;line-height:51.2px;font-weight:400;color:#153e49;margin:0;text-align:center}
+.panel>p.lede{text-align:center;color:#647579;font-size:15px;margin:0 0 40px}
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.room{border:1px solid #e3e9e7;border-radius:14px;padding:24px 22px;background:#fbfdfc}
+.room .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#6f9839;background:#eef4e6;padding:4px 10px;border-radius:20px;margin-bottom:12px}
+.room h3{margin:0 0 8px;font-size:18px;color:#17343d}
+.room p{margin:0;font-size:13.5px;line-height:1.7;color:#5b6c70}
+.sec-block{margin:0 0 44px}
+.sec-block:last-child{margin-bottom:0}
+.sec-title{font-size:20px;font-weight:900;color:#153e49;margin:0 0 14px;text-align:left}
+.sec-block ul.bullets{margin:0;padding-left:20px;font-size:14.5px;line-height:1.85;color:#33474b}
+.sec-block ul.bullets li{margin-bottom:4px}
+.info-box{background:var(--teal);color:#fff;border-radius:12px;padding:26px 30px;margin:18px 0 6px}
+.info-box .info-box-title{text-align:center;font-size:16px;font-weight:900;margin-bottom:16px;letter-spacing:-.02em}
+.info-box ul{margin:0;padding-left:20px;line-height:1.95;font-size:13.8px}
+.info-box ul li{margin-bottom:8px}
+.table-caption{text-align:center;font-weight:800;color:#153e49;margin:30px 0 16px;font-size:15px}
+.table-scroll{overflow-x:auto}
+.prog-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px;border:2px solid #17343d}
+.prog-table th{background:#17343d;color:#fff;font-weight:900;padding:13px 12px;border:1px solid #17343d;text-align:center}
+.prog-table td{padding:13px 14px;border:1px solid #b9c4c2;color:#20343a;font-weight:600;vertical-align:middle;line-height:1.6}
+.prog-table td.domain{background:#dfe9e7;font-weight:900;text-align:center;color:#153e49}
+.prog-table td.center{text-align:center}
+.prog-table tbody tr:nth-child(even) td:not(.domain){background:#f4f8f7}
+.notes-list{list-style:none;margin:0;padding:0}
+.notes-list>li{position:relative;padding-left:20px;font-size:15.5px;font-weight:800;color:#17343d;margin:0 0 8px}
+.notes-list>li::before{content:'';position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.notes-list ul{list-style:disc;margin:8px 0 26px;padding-left:34px;font-size:14px;font-weight:500;color:#33474b;line-height:1.85}
+.notes-list ul li{margin-bottom:4px}
+.notes-list>li:last-child ul{margin-bottom:0}
+.info-grid-table{width:100%;border-collapse:collapse;font-size:14px;border:2px solid #17343d;margin-bottom:10px}
+.info-grid-table td{border:1px solid #b9c4c2;padding:15px 18px;vertical-align:middle;color:#20343a;font-weight:600}
+.info-grid-table td.label{background:#17343d;color:#fff;font-weight:900;text-align:center;width:160px}
+.info-grid-table td.tel{color:#c0392b;font-weight:900;font-size:16px}
+.steps{display:flex;align-items:center;gap:14px;margin:22px 0 18px;flex-wrap:wrap}
+.step-box{flex:1 1 170px;background:var(--teal);color:#fff;text-align:center;padding:17px 10px;border-radius:8px;font-weight:800;font-size:15px}
+.step-arrow{font-size:22px;font-weight:900;color:var(--teal)}
+.info-table{border:1px solid #e3e9e7;border-radius:14px;overflow:hidden;max-width:720px;margin:0 auto}
+.info-row{display:grid;grid-template-columns:160px 1fr}
+.info-row+.info-row{border-top:1px solid #e3e9e7}
+.info-row dt{margin:0;padding:18px 20px;background:#f3f7f5;font-weight:800;font-size:14px;color:#2c464d;display:flex;align-items:center}
+.info-row dd{margin:0;padding:18px 20px;font-size:14.5px;color:#33474b;display:flex;align-items:center;line-height:1.6}
+.info-row dd.tel{color:#c0392b;font-weight:900;font-size:17px}
+.info-note{max-width:720px;margin:20px auto 0;font-size:13px;color:#748487;text-align:center}
+.foot{background:#fff;color:#758589;border-top:1px solid #e3e9e7;padding:28px max(24px,calc((100% - 1080px)/2));font-size:13px;line-height:1.8}
+@media(max-width:700px){
+  .site-header{display:none}
+  .mobile-head{display:flex;align-items:center;justify-content:space-between;height:64px;background:#fff;border-bottom:1px solid #e3e9e7;padding:0 16px}
+  .mobile-head .brand{display:flex;align-items:center;gap:8px;font-weight:900;color:#233a40}
+  .mobile-head .brand img{width:34px}
+  .mobile-head .brand span{font-size:13px}
+  .hero{height:190px;min-height:190px;display:flex;align-items:flex-end;padding:0 24px 26px}.hero>div{position:static;width:auto;transform:none;text-align:left}.hero h1{font-size:26px;line-height:1.35}.hero small{display:block}.crumb{justify-content:flex-start;margin-top:0;font-size:13px}
+  .tabs{width:auto;height:auto;margin:16px 24px 0}
+  .tab-btn{width:50%;font-size:15px}
+  .content{width:auto;max-width:none;margin:0;padding:34px 24px 80px}
+  .info-row{grid-template-columns:120px 1fr}
+}
+</style>
+<link rel="stylesheet" href="./assets/subpage-alignment.css">
+<style id="soft-subpage-theme">
+:root{--soft-accent:#6f9f96;--soft-accent-dark:#4e7f77;--soft-wash:#f2f7f6;--soft-line:#dce7e4;--soft-ink:#455d63;--soft-muted:#75868a}
+body{color:var(--soft-ink)}
+.content h2,.panel h2{color:#3f5c62!important;font-weight:500!important}
+.lede,.panel>p.lede,.content>p.lede{color:var(--soft-muted)!important}
+.tabs .tab-btn{background:#fff!important;border-color:var(--soft-line)!important;color:#63767a!important;box-shadow:none!important;font-weight:500!important}
+.tabs .tab-btn:hover,.tabs .tab-btn:focus-visible{background:#f5f9f8!important;border-color:#aac8c2!important;color:var(--soft-accent-dark)!important}
+.tabs .tab-btn.active{background:#e5f0ee!important;border-color:#a7c6c0!important;color:#3f746c!important;font-weight:700!important}
+.sec-title,.info-box-title,.table-caption{color:#54766f!important}
+.info-box,.step-box,.value,.map-box,.way-info,.empty-state{background:var(--soft-wash)!important;border-color:var(--soft-line)!important;color:#5d7075!important;box-shadow:none!important}
+.prog-table,.info-grid-table,.info-table,.notice-list,.photo-card,.video-card{border-color:var(--soft-line)!important;box-shadow:none!important}
+.prog-table th,.info-grid-table th,.info-row dt{background:#eef5f3!important;color:#516b70!important}
+.prog-table td,.info-grid-table td,.info-row dd,.notice-row,.bullets,.notes-list{color:#5d7075!important;border-color:#e3ece9!important}
+.content .cta,.way-link{background:var(--soft-accent)!important;border-color:var(--soft-accent)!important;color:#fff!important;box-shadow:none!important}
+.content .cta:hover,.way-link:hover{background:var(--soft-accent-dark)!important}
+.photo-card .t,.video-card .t{color:#53676c!important}
+.photo-card .d,.video-card .d,.info-note{color:#879397!important}
+.foot{color:#7c898c!important;border-color:#e3ebe9!important}
+/* Readability: black content text and a red table header line */
+.content,.content h2,.content h3,.content p,.content li,.content dt,.content dd,.content td,.content th,.content span,.content strong,.content b,.content a,.tabs .tab-btn{color:#222!important}
+.content .cta,.content .way-link{color:#fff!important}
+.foot{color:#333!important}
+.content .lede,.content.panel .lede,.panel>p.lede,.content>p.lede,.tabs .tab-btn.active{color:#222!important}
+.prog-table,.info-grid-table,.info-table,.notice-list{border-top:2px solid #e02020!important}
+/* Tables: white cells with complete grid lines */
+.prog-table,.info-grid-table,.info-table,.notice-list{background:#fff!important}
+.prog-table,.info-grid-table{border-collapse:collapse!important;border-spacing:0!important}
+.prog-table th,.prog-table td,.info-grid-table th,.info-grid-table td{background:#fff!important;border:1px solid #d9dfdd!important}
+.info-table,.notice-list{border-left:1px solid #d9dfdd!important;border-right:1px solid #d9dfdd!important;border-bottom:1px solid #d9dfdd!important}
+.info-row,.notice-row{background:#fff!important;border-bottom:1px solid #d9dfdd!important}
+.info-row:last-child,.notice-row:last-child{border-bottom:0!important}
+.info-row dt,.info-row dd{background:#fff!important;border:0!important}
+.info-row dt{border-right:1px solid #d9dfdd!important}
+.notice-row span:first-child{flex:1;border-right:1px solid #d9dfdd!important;padding-right:16px}.notice-row span:last-child{padding-left:16px}
+/* Education program tables: full grid and centered text */
+.prog-table{width:100%!important;border-left:1px solid #c9cfcd!important;border-right:1px solid #c9cfcd!important;border-bottom:1px solid #c9cfcd!important}
+.prog-table th,.prog-table td{background:#fff!important;border:1px solid #c9cfcd!important;text-align:center!important;vertical-align:middle!important}
+.classification-table td:nth-child(2){padding:0!important}
+.classification-table .program-entry{display:block;padding:7px 12px;border-bottom:1px solid #c9cfcd!important;text-align:center}
+.classification-table .program-entry:last-child{border-bottom:0!important}
+/* Sections 1-3: balanced type and word-based wrapping */
+#panel-program .sec-block{word-break:keep-all;overflow-wrap:break-word}
+#panel-program .sec-title{font-size:22px!important;line-height:1.45!important;font-weight:700!important;margin-bottom:18px!important}
+#panel-program .bullets,#panel-program .info-box ul,#panel-program .notes-list{font-size:16px!important;line-height:1.8!important}
+#panel-program .info-box-title{font-size:18px!important;line-height:1.5!important}
+#panel-program .table-caption{font-size:17px!important;line-height:1.5!important;margin:34px 0 18px!important}
+#panel-program .prog-table{font-size:15px!important;line-height:1.65!important;word-break:keep-all;overflow-wrap:break-word}
+#panel-program .prog-table th{font-size:16px!important;line-height:1.45!important;padding:14px 12px!important}
+#panel-program .prog-table td{font-size:15px!important;line-height:1.65!important;padding:14px 16px!important}
+#panel-program .classification-table td:nth-child(2){padding:0!important}
+#panel-program .classification-table .program-entry{font-size:15px!important;line-height:1.5!important;padding:10px 12px!important;word-break:keep-all}
+#panel-program .notes-list>li{font-size:17px!important;line-height:1.65!important}
+#panel-program .notes-list ul{font-size:15px!important;line-height:1.75!important}
+</style>
+<style id="professional-subpage-theme">
+:root{--detail-ink:#222;--detail-muted:#606b6e;--detail-line:#d7dddb;--detail-soft:#f7f9f8;--detail-red:#c92b32;--detail-teal:#5f8f87}
+body{color:var(--detail-ink);font-size:16px;line-height:1.7}
+.content{color:var(--detail-ink)}
+.content h2,.panel h2{margin-bottom:10px!important;color:#181c1d!important;font-size:32px!important;font-weight:600!important;line-height:1.4!important;letter-spacing:-.035em!important;text-align:center!important;word-break:keep-all}
+.content h3,.sec-title{color:#242a2c!important;font-size:21px!important;font-weight:700!important;line-height:1.5!important;letter-spacing:-.025em!important;word-break:keep-all}
+.lede,.panel>p.lede,.content>p.lede{max-width:760px;margin-left:auto!important;margin-right:auto!important;color:#333!important;font-size:16px!important;line-height:1.8!important;text-align:center!important;word-break:keep-all}
+.content p,.content li,.content dt,.content dd,.content td,.content th{color:var(--detail-ink)!important;word-break:keep-all;overflow-wrap:break-word}
+.tabs{align-items:stretch}
+.tabs .tab-btn{height:42px!important;padding:0 18px!important;background:#fff!important;border:1px solid var(--detail-line)!important;color:#333!important;font-size:16px!important;font-weight:500!important;line-height:40px!important;box-shadow:none!important}
+.tabs .tab-btn:hover,.tabs .tab-btn:focus-visible{background:var(--detail-soft)!important;border-color:#b9c3c0!important;color:#111!important}
+.tabs .tab-btn.active{background:#159b9b!important;border:1px solid #159b9b!important;color:#fff!important;font-weight:700!important;line-height:40px!important}
+.sec-block{margin-bottom:42px}
+.info-box,.step-box,.value,.map-box,.way-info,.empty-state{background:#fafbfb!important;border:1px solid var(--detail-line)!important;color:var(--detail-ink)!important;box-shadow:none!important}
+.info-box-title,.table-caption{color:#242a2c!important;font-size:17px!important;font-weight:700!important;line-height:1.55!important;text-align:center!important;word-break:keep-all}
+.bullets,.notes-list,.info-box ul{font-size:16px!important;line-height:1.85!important}
+.prog-table,.info-grid-table,.info-table,.notice-list{width:100%;background:#fff!important;border-top:2px solid var(--detail-red)!important;border-right:1px solid var(--detail-line)!important;border-bottom:1px solid var(--detail-line)!important;border-left:1px solid var(--detail-line)!important;border-radius:0!important;box-shadow:none!important}
+.prog-table,.info-grid-table{border-collapse:collapse!important;border-spacing:0!important;font-size:15px!important;line-height:1.6!important}
+.prog-table th,.prog-table td,.info-grid-table th,.info-grid-table td{padding:13px 14px!important;background:#fff!important;border:1px solid var(--detail-line)!important;color:var(--detail-ink)!important;text-align:center!important;vertical-align:middle!important}
+.prog-table th,.info-grid-table th{font-size:15.5px!important;font-weight:700!important}
+.info-row{background:#fff!important;border-bottom:1px solid var(--detail-line)!important}
+.info-row:last-child{border-bottom:0!important}
+.info-row dt,.info-row dd{min-height:56px;padding:14px 18px!important;background:#fff!important;border:0!important;color:var(--detail-ink)!important;font-size:15px!important;line-height:1.6!important;text-align:center!important;justify-content:center!important}
+.info-row dt{border-right:1px solid var(--detail-line)!important;font-weight:700!important}
+.notice-row{min-height:54px;padding:0!important;background:#fff!important;border-bottom:1px solid var(--detail-line)!important;color:var(--detail-ink)!important;font-size:15px!important;align-items:stretch!important}
+.notice-row:last-child{border-bottom:0!important}
+.notice-row span{display:flex;align-items:center;padding:13px 16px!important}
+.notice-row span:first-child{flex:1;border-right:1px solid var(--detail-line)!important;justify-content:flex-start}
+.notice-row span:last-child{min-width:128px;justify-content:center;color:#4c5659!important}
+.classification-table .program-entry{font-size:15px!important;line-height:1.55!important;padding:10px 12px!important;border-color:var(--detail-line)!important;text-align:center!important}
+.photo-card,.video-card{background:#fff!important;border:1px solid var(--detail-line)!important;border-radius:8px!important;box-shadow:none!important;overflow:hidden}
+.photo-card .t,.video-card .t{color:#222!important;font-size:15px!important;line-height:1.55!important}
+.photo-card .d,.video-card .d,.info-note{color:#596467!important;font-size:13.5px!important}
+.content .cta,.content .way-link{background:var(--detail-teal)!important;border:1px solid var(--detail-teal)!important;color:#fff!important;font-size:15px!important;font-weight:700!important;box-shadow:none!important}
+.content .cta:hover,.content .way-link:hover{background:#4f7b74!important}
+.foot{color:#3f484a!important;font-size:13.5px!important;line-height:1.8!important;border-color:var(--detail-line)!important}
+@media(max-width:700px){
+  body{font-size:15px}.content h2,.panel h2{font-size:27px!important}.content h3,.sec-title{font-size:19px!important}
+  .lede,.panel>p.lede,.content>p.lede{font-size:15px!important}.tabs .tab-btn{font-size:14px!important;padding:0 10px!important}
+  .prog-table,.info-grid-table{font-size:14px!important}.prog-table th,.prog-table td,.info-grid-table th,.info-grid-table td{padding:11px 10px!important}
+}
+</style>
+</head>
+<body>
+<header class="mobile-head">
+<a class="brand" href="./index.html">
+<img src="./assets/logo-mark-transparent.png" alt="">
+<span>장애인평생교육원 꿈터글방</span>
+</a>
+<a href="./index.html" style="font-size:14px;font-weight:700;color:#26383d">홈으로</a>
+</header>
+
+<header class="site-header">
+<div class="header-top">
+<div class="socials">
+<a href="https://cafe.naver.com/" target="_blank" rel="noopener" aria-label="네이버 카페" title="네이버 카페" style="width:24px;height:24px;border-radius:6px;background:#03c75a;color:white;display:flex;align-items:center;justify-content:center;font:900 14px/1 Arial,sans-serif;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.14)">N</a>
+<a href="https://youtube.com" target="_blank" rel="noopener" aria-label="유튜브" title="유튜브" style="width:24px;height:24px;border-radius:6px;background:#FF0000;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.14)"><svg width="17" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="4" fill="white"/><path d="M10.5 9v6l5-3-5-3z" fill="#FF0000"/></svg></a>
+<a href="https://pf.kakao.com" target="_blank" rel="noopener" aria-label="카카오톡" title="카카오톡" style="width:24px;height:24px;border-radius:6px;background:#FEE500;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.14)"><svg width="19" height="16" viewBox="0 0 34 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17 2C8.7 2 2 7.2 2 13.6c0 4 2.6 7.5 6.6 9.6l-1.5 5.4a.6.6 0 0 0 .9.7l6.4-4.3c.85.1 1.72.16 2.6.16 8.3 0 15-5.2 15-11.6S25.3 2 17 2z" fill="#191919"/><text x="17" y="17" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="8.5" fill="#FFFFFF" style="fill:#FFFFFF!important;stroke:none!important" letter-spacing="-0.3">TALK</text></svg></a>
+<a href="https://instagram.com" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램" style="width:24px;height:24px;border-radius:6px;background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(0,0,0,.14)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.8" cy="6.2" r="1.3" fill="white"/></svg></a>
+</div>
+<a href="./index.html" aria-label="홈" style="display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:800;color:#1a1a1a;text-shadow:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="#1a1a1a" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3.2 3 11h2.2v9.5h5.3v-6.2h3v6.2h5.3V11H21L12 3.2z"/></svg>홈</a>
+<a href="#login" aria-label="로그인" style="display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:800;color:#1a1a1a;text-shadow:none"><svg width="11" height="13" viewBox="0 0 24 24" fill="#1a1a1a" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3H9z"/></svg>LOGIN</a>
+</div>
+<div class="header-main">
+<a class="desktop-brand" href="./index.html">
+<img src="./assets/logo-mark-transparent.png" alt="">
+<span class="btxt"><span class="b1">사회복지법인 즐거운마을</span><span class="b2">장애인평생교육원 꿈터글방</span></span>
+</a>
+<nav class="primary-nav" aria-label="주요 메뉴">
+<div class="nav-item">
+<a href="./program.html">사업안내</a>
+<div class="nav-drop">
+<a href="./program.html#program">주요사업</a>
+<a href="./program.html#usage">이용안내</a>
+</div>
+</div>
+<div class="nav-item">
+<a href="./news.html">센터소식</a>
+<div class="nav-drop">
+<a href="./news.html#notice">공지사항</a>
+<a href="./news.html#photo">사진갤러리</a>
+<a href="./news.html#video">영상갤러리</a>
+<a href="./news.html#press">보도자료</a>
+<a href="./news.html#welfare">복지정보</a>
+</div>
+</div>
+<div class="nav-item">
+<a href="./donate.html">후원</a>
+<div class="nav-drop">
+<a href="./donate.html#donate-guide">후원안내</a>
+</div>
+</div>
+<div class="nav-item">
+<a href="./about.html">센터소개</a>
+<div class="nav-drop">
+<a href="./about.html#greeting">인사말</a>
+<a href="./about.html#mission">미션·비전·연혁</a>
+<a href="./about.html#org">조직도</a>
+<a href="./about.html#corp">운영법인안내</a>
+<a href="./about.html#facility">시설안내</a>
+<a href="./about.html#way">오시는길</a>
+</div>
+</div>
+</nav>
+<div class="nav-overlay" aria-hidden="true"></div>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<small>PROGRAMS &amp; GUIDE</small>
+<h1 id="heroTitle">사업안내</h1>
+<div class="crumb"><a href="./index.html" style="color:#cfe3e0" aria-label="홈">⌂</a><span class="sep">›</span><span>사업안내</span><span class="sep">›</span><span id="crumbTab">주요사업</span></div>
+</div>
+</section>
+
+<div class="tabs">
+<button type="button" class="tab-btn active" data-tab="program">주요사업</button>
+<button type="button" class="tab-btn" data-tab="usage">이용안내</button>
+</div>
+
+<main class="content">
+
+<section class="panel active" id="panel-program">
+<h2>주요사업</h2>
+<p class="lede">수준별 학습 교실과 개인별 맞춤 교육으로 배움의 즐거움을 나눕니다.</p>
+
+<div class="sec-block">
+<h3 class="sec-title">1. 장애인 평생교육이란?</h3>
+<ul class="bullets">
+<li>장애인이 참여하거나 장애인을 위해 설계되었거나 장애인도 포함되어 운영되는 모든 형태의 교육 활동</li>
+<li>따라서 장애인평생교육은 일반 평생교육의 기본적 개념을 갖고 있으면서, 장애인의 특성과 요구를 고려한 내용을 포함한 교육 활동</li>
+</ul>
+</div>
+
+<div class="sec-block">
+<div class="info-box">
+<div class="info-box-title">장애인에게 평생교육의 의미</div>
+<ul>
+<li>평생교육은 누구나 누려야 하는 교육 <b>(보편적 권리)</b><br>· 평생교육이 본질적으로 그 누구든지 그 언제라도 학습에 임할 수 있게 한다는 이념이며, 장애인도 평생학습에 참여할 권리가 있음.</li>
+<li>평생교육은 장애인의 원활한 삶을 위한 유용한 도구 <b>(실제적 권리)</b><br>· 장애인의 직업 취득, 경제 생활참여, 사회활동 참여 등에서는 개인의 특성과 요구에 맞는 것을 골라 받아야 하고, 평생교육은 이를 지원할 수 있는 유용한 수단이 될 수 있음.</li>
+<li>진정한 사회통합을 달성하기 위한 수단 <b>(확장적 권리)</b><br>· 평생교육은 지역사회 내에서 장애인과 비장애인의 통합 활동 경험을 제공할 수 있는 기반을 마련하는데 기여할 수 있음.</li>
+</ul>
+</div>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">2. 장애인 평생교육 프로그램 개념</h3>
+<ul class="bullets">
+<li>학습자의 성장과 발전을 위해 체계적으로 개발·수립하는 지식과 경험을 포함한 모든 학습지원 활동</li>
+<li>장애인 학습자의 특성과 요구가 반영된 평생교육 프로그램을 조직적으로 연결한 체계 또는 일련의 과정</li>
+<li>장애인 평생교육 프로그램 분류체계는 6개 분류체계와 18개 세부 영역별 교육프로그램</li>
+</ul>
+<p class="table-caption">&lt; 장애인 평생교육 프로그램 분류 체계 &gt;</p>
+<div class="table-scroll">
+<table class="prog-table classification-table">
+<thead><tr><th style="width:16%">영역</th><th style="width:26%">교육프로그램</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td class="domain">기초문해교육</td><td><span class="program-entry">한글교육 프로그램</span><span class="program-entry">한글생활문해 프로그램</span><span class="program-entry">기초자립생활 프로그램</span></td><td>생활 속 다양한 지식과 정보를 주체적으로 이해하고 자기결정을 통해 의사를 표현하기 위한 능력을 함양</td></tr>
+<tr><td class="domain">직업능력향상교육</td><td><span class="program-entry">기초직업교육 프로그램</span><span class="program-entry">전직업교육 프로그램</span><span class="program-entry">자립직업 프로그램</span></td><td>직업세계의 탐색과 다양한 직업적 경험을 통하여 자주적인 직업인으로서 안정적인 삶을 영위할 수 있도록 지원</td></tr>
+<tr><td class="domain">문화예술교육</td><td><span class="program-entry">여가스포츠 프로그램</span><span class="program-entry">문화예술향유 프로그램</span><span class="program-entry">문화예술숙련 프로그램</span></td><td>다양한 예술 활동을 통해 문화를 향유하고 삶의 주체로서 풍요로운 삶을 영위할 수 있도록 지원</td></tr>
+<tr><td class="domain">인문교양교육</td><td><span class="program-entry">사회재활 프로그램</span><span class="program-entry">생활상장 프로그램</span><span class="program-entry">인문학적교양 프로그램</span></td><td>소속 사회의 구성원으로서 기능과 역할을 수행할 수 있도록 돕고, 교양을 갖춘 현대인으로서 진취적인 성품과 다양한 소양을 개발하도록 지원</td></tr>
+<tr><td class="domain">학력보완교육</td><td><span class="program-entry">초등학력보완 프로그램</span><span class="program-entry">중등학력보완 프로그램</span><span class="program-entry">고등학력보완 프로그램</span></td><td>학력인증제도를 통한 학력취득 뿐만 아니라 학령기에 습득했던 다양한 지식 및 기능을 실제 생활에서 활용하기 위한 재교육을 지원</td></tr>
+<tr><td class="domain">시민참여교육</td><td><span class="program-entry">시민의식 프로그램</span><span class="program-entry">시민역량 프로그램</span><span class="program-entry">시민활동 프로그램</span></td><td>사회의 한 구성원으로서 스스로를 존중하며 조화로운 공동체의 일원으로 살아가기 위해 시민의식과 책무성을 기반으로 한 시민행동을 지원</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">3. 센터 주요 교육</h3>
+<div class="table-scroll">
+<table class="prog-table">
+<thead><tr><th style="width:16%">구분</th><th style="width:16%">프로그램명</th><th style="width:22%">대상</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td class="domain">기초문해교육</td><td class="center">문해교실</td><td class="center">한글 학습을 원하는 성인 장애인</td><td>글을 읽고 이해하는 능력을 기르는 기초 문해 학습</td></tr>
+<tr><td class="domain">인문교양교육</td><td class="center">문학교실</td><td class="center">글쓰기·창작 활동에 관심 있는 학습자</td><td>작가를 꿈꾸거나 글쓰기를 즐기는 학습자를 위한 창작 활동</td></tr>
+<tr><td class="domain">문화예술교육</td><td class="center">미술교실</td><td class="center">정서적 안정과 표현활동을 원하는 학습자</td><td>그리기·만들기·자르기 등 다양한 재료를 활용한 작업활동으로 심리정서 안정과 성장 지원</td></tr>
+<tr><td class="domain">문화예술교육</td><td class="center">음악교실</td><td class="center">음악·신체활동에 관심 있는 학습자</td><td>도구와 악기를 활용한 신체활동, 리듬악기·노래교실 체험</td></tr>
+<tr><td class="domain">건강증진교육</td><td class="center">건강교실</td><td class="center">생활체력 증진을 원하는 학습자</td><td>생활체력 증진과 건강관리를 위한 신체활동 프로그램</td></tr>
+<tr><td class="domain">학력보완교육</td><td class="center">검정고시반</td><td class="center">학력 취득·향상을 원하는 학습자</td><td>검정고시 대비 학습을 통한 학력 취득 지원</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="sec-block">
+<ul class="notes-list">
+<li>이용자 참여보장 방안
+<ul><li>센터이용자 만족도 및 욕구조사를 통한 사업을 진행</li></ul>
+</li>
+<li>지역사회주민 참여 프로그램
+<ul>
+<li>소외계층 및 사각지대 가정의 정리수납을 위한 주거지킴이 양성과정 실시</li>
+<li>지역주민을 위한 다목적실 및 프로그램실 대여</li>
+<li>지역주민과 함께 하는 평생학습결과물 전시회 및 발표회등 실시</li>
+</ul>
+</li>
+<li>장애인평생교육 관련 조사 및 연구사업
+<ul>
+<li>장애인 평생교육 관련 중심으로 한 조사 및 연구사업 강화 - 장애유형별 맞춤형 설문지 도구개발</li>
+<li>기초조사를 바탕으로 한 DB 구축사업과 연구보고서 작성 발표</li>
+<li>장애인 평생교육 협의체 운영을 활용한 평생교육 전문가 및 전문인력 양성</li>
+</ul>
+</li>
+</ul>
+</div>
+
+</section>
+
+<section class="panel" id="panel-usage">
+<h2>이용안내</h2>
+<p class="lede">꿈터글방 교육 프로그램 이용에 관한 안내입니다.</p>
+
+<div class="sec-block">
+<h3 class="sec-title">1. 운영안내</h3>
+<table class="info-grid-table">
+<tr><td class="label">대상</td><td colspan="3">장애인평생교육원 꿈터글방 교육 프로그램 수강을 원하는 성인 장애인 누구나</td></tr>
+<tr><td class="label">이용시간</td><td>평일 (화 ~ 금) AM 9:00 ~ PM 2:00</td><td class="label">이용료</td><td>무료</td></tr>
+<tr><td class="label">문의전화</td><td colspan="3" class="tel">010-5703-2730 / 010-4607-0855</td></tr>
+</table>
+<p class="info-note">※ 휴관일 : 법정공휴일 및 임시휴관일</p>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">2. 이용방법</h3>
+<div class="steps">
+<div class="step-box">교육신청서 작성</div>
+<span class="step-arrow">&rsaquo;</span>
+<div class="step-box">교육생 선정 명단 확인</div>
+<span class="step-arrow">&rsaquo;</span>
+<div class="step-box">교육참여</div>
+</div>
+<ul class="bullets">
+<li>교육생 모집은 홈페이지 공지사항을 통해 안내되며, 정원이 남는 교실은 수시로 추가 모집됩니다.</li>
+</ul>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">3. 교육접수 안내</h3>
+<ul class="bullets">
+<li>접수기간 : 홈페이지 공지사항 및 게시판 공지 참고</li>
+<li>접수방법 : 방문접수 (본인 및 보호자 동반)</li>
+<li>접수서류 : 신청서(센터 양식), 개인정보동의서(센터 양식), 복지카드</li>
+<li>그 외 자세한 접수 기준은 센터로 문의해 주시기 바랍니다.</li>
+</ul>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">4. 유의사항</h3>
+<ul class="bullets">
+<li>접수 : 신청서 내용은 사실대로 작성해 주시기 바라며, 허위 기재 시 교육이 취소될 수 있습니다.</li>
+<li>수강 : 신청한 본인만 참여 가능하며, 다른 교육생의 참여는 제한될 수 있습니다.</li>
+<li>교육시간 : 프로그램에 따라 종료 시간이 다를 수 있습니다.</li>
+</ul>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">5. 문의전화</h3>
+<ul class="bullets">
+<li>010-5703-2730 / 010-4607-0855</li>
+</ul>
+</div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer style="padding:34px max(24px,calc((100% - 1080px)/2)) 42px;background:#f5f7f7;border-top:1px solid #e4e8e7;color:#92999c;font-size:13px;line-height:1.75">
+<nav aria-label="하단 메뉴" style="display:flex;gap:24px;margin-bottom:24px;font-size:15px">
+<a href="./privacy.html" style="color:#26383d;font-weight:900">개인정보처리방침</a>
+<a href="./about.html" style="color:#7f878a">센터소개</a>
+<a href="./location.html" style="color:#7f878a">오시는길</a>
+</nav>
+<div style="display:flex;flex-wrap:wrap;gap:8px 28px">
+<span>장애인평생교육원 꿈터글방</span>
+<span>광주광역시 북구 월동로 15(두암동)</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px 26px">
+<span>TEL : 062-264-7942</span>
+<span>FAX : 062-264-7942</span>
+<span>EMAIL : dreamroom2024@naver.com</span>
+</div>
+<div>Copyright ⓒ 장애인평생교육원 꿈터글방 All Rights Reserved.</div>
+</footer>
+
+<script>
+(function(){
+  var siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    var onScroll = function(){ siteHeader.classList.toggle('is-scrolled', window.scrollY > 40); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+})();
+(function(){
+  var buttons = document.querySelectorAll('.tab-btn');
+  var panels = { program: document.getElementById('panel-program'), usage: document.getElementById('panel-usage') };
+  var titles = { program: '주요사업', usage: '이용안내' };
+  var crumbTab = document.getElementById('crumbTab');
+  function activate(name){
+    buttons.forEach(function(btn){ btn.classList.toggle('active', btn.dataset.tab === name); });
+    Object.keys(panels).forEach(function(key){ panels[key].classList.toggle('active', key === name); });
+    crumbTab.textContent = titles[name];
+  }
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){ activate(btn.dataset.tab); });
+  });
+  function activateFromHash(){
+    var hash = (location.hash || '').replace('#','');
+    if (hash === 'usage' || hash === 'program') activate(hash);
+  }
+  activateFromHash();
+  window.addEventListener('hashchange', activateFromHash);
+})();
+
+(function(){
+  var overlay = document.querySelector('.nav-overlay');
+  if (!overlay) return;
+  document.querySelectorAll('.nav-drop').forEach(function(drop){
+    var highlight = document.createElement('div');
+    highlight.className = 'nav-drop-highlight';
+    drop.appendChild(highlight);
+    drop.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('mouseenter', function(){
+        var dropRect = drop.getBoundingClientRect();
+        var overlayRect = overlay.getBoundingClientRect();
+        highlight.style.height = Math.max(overlayRect.bottom - dropRect.top, 0) + 'px';
+        highlight.style.opacity = '1';
+      });
+      link.addEventListener('mouseleave', function(){ highlight.style.opacity = '0'; });
+    });
+  });
+})();
+</script>
+<script src="./assets/admin-login.js" defer></script>
+</body>
+</html>

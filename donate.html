@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>센터소개 | 꿈터글방</title>
+<title>후원안내 | 꿈터글방</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -47,39 +47,43 @@ a{color:inherit;text-decoration:none}
 .nav-drop a{position:relative;z-index:1;display:block;padding:9px 14px!important;font-size:14px!important;font-weight:700!important;color:#33474b!important;text-shadow:none!important;white-space:nowrap;border-radius:6px}
 .nav-drop a:hover,.nav-drop a:focus-visible{color:#e02020!important}
 .nav-drop a::after{display:none!important}
-.hero{position:relative;min-height:320px;display:flex;align-items:end;background:linear-gradient(90deg,rgba(14,49,59,.38),rgba(14,49,59,.14)),url('./assets/tree-reading.png') bottom/cover;border-bottom:1px solid #e3e9e7;padding:44px max(24px,calc((100% - 1080px)/2)) 30px;color:#fff}
+.hero{position:relative;min-height:320px;display:flex;align-items:end;background:linear-gradient(90deg,rgba(14,49,59,.38),rgba(14,49,59,.14)),url('./assets/generated/adaptive-sports.png') center/cover;border-bottom:1px solid #e3e9e7;padding:44px max(24px,calc((100% - 1080px)/2)) 30px;color:#fff}
 .hero small{color:#bfe0c8;font-weight:900;letter-spacing:.14em;font-size:12px}
 .hero h1{font-size:34px;margin:8px 0 12px}
 .crumb{font-size:13px;color:#cfe3e0;display:flex;align-items:center;gap:6px}
 .crumb span.sep{opacity:.6}
-.tabs{max-width:1080px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-.tab-btn{text-align:center;padding:14px 10px;background:#fff;border:1px solid #dde5e3;border-radius:2px;font-size:14px;font-weight:800;color:#4a5c60;cursor:pointer;box-shadow:0 6px 18px rgba(20,45,50,.06);transition:.15s}
-.tab-btn:hover{border-color:#159b9b}
-.tab-btn.active{background:#159b9b;border-color:#159b9b;color:#fff}
+.tabs{display:flex;justify-content:center}
+.tab-btn{display:block;text-align:center;background:#159b9b;border:1px solid #159b9b;color:#fff}
 .content{max-width:1080px;margin:auto;padding:52px 24px 80px}
-.panel{display:none}
-.panel.active{display:block}
-.panel h2{font-size:26px;color:#153e49;margin:0 0 8px;text-align:center}
-.panel>p.lede{text-align:center;color:#647579;font-size:15px;margin:0 0 40px}
-.greeting p{font-size:16px;line-height:1.9;color:#4b5d61;max-width:720px;margin:0 auto 16px}
-.values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
-.value{padding:26px 22px;border-radius:14px;background:#f0f6f2;border:1px solid #e0e9e4}
-.value b{color:#6f9839;font-size:13px;letter-spacing:.06em}
-.value h3{font-size:17px;margin:8px 0 6px}
-.value p{margin:0;font-size:13.5px;line-height:1.7;color:#5b6c70}
-.info-table{border:1px solid #e3e9e7;border-radius:14px;overflow:hidden;max-width:720px;margin:0 auto}
+.content h2{font-size:26px;color:#153e49;margin:0 0 8px;text-align:center}
+.content>p.lede{text-align:center;color:#647579;font-size:15px;margin:0 0 40px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.8}
+.info-table{border:1px solid #e3e9e7;border-radius:14px;overflow:hidden;max-width:640px;margin:0 auto}
 .info-row{display:grid;grid-template-columns:150px 1fr}
 .info-row+.info-row{border-top:1px solid #e3e9e7}
 .info-row dt{margin:0;padding:16px 20px;background:#f3f7f5;font-weight:800;font-size:14px;color:#2c464d;display:flex;align-items:center}
-.info-row dd{margin:0;padding:16px 20px;font-size:14px;color:#33474b;display:flex;align-items:center;line-height:1.6}
-.empty-state{max-width:640px;margin:0 auto;text-align:center;padding:48px 24px;border:1px dashed #dbe3e1;border-radius:14px;color:#748487;font-size:14px;line-height:1.8}
-.panel.facility.active{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:center;max-width:900px;margin:0 auto}
-.facility img{width:100%;border-radius:14px;display:block}
-.facility p{font-size:14.5px;line-height:1.9;color:#4b5d61}
-.map-box{max-width:760px;margin:0 auto}
-.map-box img{width:100%;border-radius:14px;display:block;border:1px solid #e3e9e7}
-.way-info{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;margin-top:18px;font-size:14px;color:#4b5d61}
-.way-link{display:inline-block;margin-top:20px;text-align:center;width:100%;font-size:13px;font-weight:800;color:#159b9b}
+.info-row dd{margin:0;padding:16px 20px;font-size:14.5px;color:#33474b;display:flex;align-items:center;line-height:1.6}
+.cta{display:block;max-width:320px;margin:28px auto 0;text-align:center;padding:15px;border-radius:2px;background:#159b9b;color:#fff;font-weight:900;font-size:14.5px}
+.sec-block{margin:0 0 44px}
+.sec-block:last-child{margin-bottom:0}
+.sec-title{font-size:20px;font-weight:900;color:#153e49;margin:0 0 14px;text-align:left}
+.sec-block ul.bullets{margin:0;padding-left:20px;font-size:14.5px;line-height:1.85;color:#33474b}
+.sec-block ul.bullets li{margin-bottom:4px}
+.table-scroll{overflow-x:auto}
+.prog-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:400px;border:2px solid #17343d}
+.prog-table th{background:#17343d;color:#fff;font-weight:900;padding:13px 12px;border:1px solid #17343d;text-align:center}
+.prog-table td{padding:13px 14px;border:1px solid #b9c4c2;color:#20343a;font-weight:600;vertical-align:middle;line-height:1.6}
+.prog-table td.center{text-align:center}
+.info-box{background:var(--teal);color:#fff;border-radius:12px;padding:26px 30px;margin:18px 0 6px}
+.info-box .info-box-title{text-align:center;font-size:16px;font-weight:900;margin-bottom:16px;letter-spacing:-.02em}
+.info-box p{margin:0;font-size:13.8px;line-height:1.85;text-align:center}
+.info-note{max-width:720px;margin:20px auto 0;font-size:13px;color:#748487;text-align:center}
+.contact-form{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px;font-family:inherit}
+.contact-form-row{display:flex;flex-direction:column;gap:6px}
+.contact-form-row label{font-size:13.5px;font-weight:700;color:#2c464d}
+.contact-form-row label span{color:#c0392b}
+.contact-form-row input,.contact-form-row textarea{font-family:inherit;border:1px solid #d8dcde;border-radius:8px;padding:12px 14px;font-size:14.5px;line-height:1.5;color:#222;outline:0;resize:vertical}
+.contact-form-row input:focus,.contact-form-row textarea:focus{border-color:#159b9b}
+.contact-form-note{font-size:12.5px;color:#748487;margin:0;text-align:center}
 .foot{background:#fff;color:#758589;border-top:1px solid #e3e9e7;padding:28px max(24px,calc((100% - 1080px)/2));font-size:13px;line-height:1.8}
 @media(max-width:700px){
   .site-header{display:none}
@@ -88,11 +92,9 @@ a{color:inherit;text-decoration:none}
   .mobile-head .brand img{width:34px}
   .mobile-head .brand span{font-size:13px}
   .hero{min-height:190px;padding-bottom:26px}.hero h1{font-size:26px}
-  .tabs{margin-top:16px;grid-template-columns:repeat(3,1fr)}
+  .tabs{margin:16px 24px 0}.tab-btn{width:100%;height:40px;line-height:40px}
   .content{padding-top:34px}
-  .values{grid-template-columns:1fr}
   .info-row{grid-template-columns:110px 1fr}
-  .facility{grid-template-columns:1fr}
 }
 </style>
 <link rel="stylesheet" href="./assets/subpage-alignment.css">
@@ -241,77 +243,99 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
 
 <section class="hero">
 <div>
-<small>ABOUT KKUMTEO</small>
-<h1>센터소개</h1>
-<div class="crumb"><a href="./index.html" style="color:#cfe3e0" aria-label="홈">⌂</a><span class="sep">›</span><span>센터소개</span><span class="sep">›</span><span id="crumbTab">인사말</span></div>
+<small>DONATE</small>
+<h1>후원안내</h1>
+<div class="crumb"><a href="./index.html" style="color:#cfe3e0" aria-label="홈">⌂</a><span class="sep">›</span><span>후원</span><span class="sep">›</span><span>후원안내</span></div>
 </div>
 </section>
 
-<div class="tabs">
-<button type="button" class="tab-btn active" data-tab="greeting">인사말</button>
-<button type="button" class="tab-btn" data-tab="mission">미션·비전·연혁</button>
-<button type="button" class="tab-btn" data-tab="org">조직도</button>
-<button type="button" class="tab-btn" data-tab="corp">운영법인안내</button>
-<button type="button" class="tab-btn" data-tab="facility">시설안내</button>
-<button type="button" class="tab-btn" data-tab="way">오시는길</button>
+<div class="tabs" aria-label="후원 메뉴">
+<span class="tab-btn active">후원안내</span>
 </div>
 
-<main class="content">
+<main class="content" id="donate-guide">
+<h2>후원안내</h2>
+<p class="lede">장애인들의 평생교육 실현을 위한 꿈터글방의 후원자가 되어주세요. 후원금은 문해·문학·미술·음악·건강교실과 검정고시반 운영에 소중하게 쓰입니다.</p>
 
-<section class="panel active greeting" id="panel-greeting">
-<h2>인사말</h2>
-<p class="lede">배움이 꿈이 되는 곳, 함께 성장하는 꿈터글방입니다.</p>
-<p>장애인평생교육원 꿈터글방은 성인 장애인의 배움과 일상을 연결하는 평생교육 공간입니다. 문해·독서, 음악, 미술, 건강, 생활체육과 분반수업을 통해 각자의 속도와 가능성을 존중하는 교육을 이어갑니다.</p>
-<p>함께 배우고 서로를 격려하며, 배움의 즐거움이 자립과 참여로 이어지는 따뜻한 공동체를 만들어갑니다.</p>
-</section>
-
-<section class="panel" id="panel-mission">
-<h2>미션·비전·연혁</h2>
-<p class="lede">꿈터글방이 지향하는 가치입니다.</p>
-<div class="values">
-<div class="value"><b>MISSION</b><h3>존중하는 배움</h3><p>학습자의 특성과 속도를 존중하는 맞춤형 교육을 실천합니다.</p></div>
-<div class="value"><b>VISION</b><h3>함께하는 성장</h3><p>교사와 학습자, 지역사회가 함께 배우고 성장합니다.</p></div>
-<div class="value"><b>VALUE</b><h3>일상으로의 연결</h3><p>배운 내용을 생활과 자립, 사회 참여로 이어갑니다.</p></div>
+<div class="sec-block">
+<h3 class="sec-title">후원종류</h3>
+<div class="table-scroll">
+<table class="prog-table">
+<thead><tr><th>정기후원</th><th>일시후원</th></tr></thead>
+<tbody><tr><td class="center">일정 금액을 매월 정기적으로 후원</td><td class="center">일정 금액을 비정기적으로 후원</td></tr></tbody>
+</table>
 </div>
-<div class="empty-state" style="margin-top:32px">설립 연혁은 준비 중입니다. 확인되는 대로 안내해드리겠습니다.</div>
-</section>
+</div>
 
-<section class="panel" id="panel-org">
-<h2>조직도</h2>
-<p class="lede">꿈터글방의 운영 조직입니다.</p>
-<div class="empty-state">조직도는 준비 중입니다.<br>확인되는 대로 안내해드리겠습니다.</div>
-</section>
+<div class="sec-block">
+<h3 class="sec-title">후원구분</h3>
+<div class="table-scroll">
+<table class="prog-table">
+<thead><tr><th>비지정 후원</th><th>지정 후원</th></tr></thead>
+<tbody><tr><td class="center">교육 프로그램 및 센터 운영을 위한 후원</td><td class="center">문해·문학·미술·음악·건강교실, 검정고시반 등 특정 프로그램을 지정하여 후원</td></tr></tbody>
+</table>
+</div>
+</div>
 
-<section class="panel" id="panel-corp">
-<h2>운영법인안내</h2>
-<p class="lede">꿈터글방을 운영하는 법인 정보입니다.</p>
+<div class="sec-block">
+<h3 class="sec-title">후원참여방법</h3>
+<ul class="bullets">
+<li>계좌이체, 현금, 물품 후원으로 참여하실 수 있습니다.</li>
+</ul>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">후원계좌</h3>
 <dl class="info-table">
-<div class="info-row"><dt>운영법인</dt><dd>사회복지법인 즐거운마을</dd></div>
-<div class="info-row"><dt>기타 정보</dt><dd>준비 중입니다. 확인되는 대로 안내해드리겠습니다.</dd></div>
+<div class="info-row"><dt>광주은행</dt><dd>1107-021-655223</dd></div>
+<div class="info-row"><dt>농협</dt><dd>351-1308-2663-43</dd></div>
+<div class="info-row"><dt>예금주</dt><dd>장애인평생교육원 꿈터글방</dd></div>
 </dl>
-</section>
-
-<section class="panel facility" id="panel-facility">
-<h2 style="grid-column:1/-1">시설안내</h2>
-<p class="lede" style="grid-column:1/-1">배움과 일상이 이어지는 꿈터글방의 공간입니다.</p>
-<img src="./assets/building-signage-hq.jpg" alt="꿈터글방 간판이 보이는 건물 외부 전경">
-<p>장애인평생교육원 꿈터글방은 광주광역시 북구 월동로 15(두암동)에 위치하고 있습니다. 문해·문학·미술·음악·건강교실과 검정고시반이 운영되는 교육 공간입니다.<br><br>세부 시설 규모 및 설비 안내는 준비 중이며, 확인되는 대로 안내해드리겠습니다.</p>
-</section>
-
-<section class="panel" id="panel-way">
-<h2>오시는길</h2>
-<p class="lede">꿈터글방으로 오시는 길을 안내합니다.</p>
-<div class="map-box">
-<img src="./assets/map.png" alt="장애인평생교육원 꿈터글방 위치 안내 지도">
 </div>
-<div class="way-info">
-<span>광주광역시 북구 월동로 15(두암동)</span>
-<span>TEL 062-264-7942</span>
-<span>상담 010-5703-2730</span>
-</div>
-<a class="way-link" href="./location.html">전체 지도 크게 보기 →</a>
-</section>
 
+<div class="sec-block">
+<h3 class="sec-title">후원신청방법</h3>
+<ul class="bullets">
+<li>전화 문의 : 062-264-7942 (평일 화~금 AM 9:00~PM 2:00)</li>
+<li>이메일 문의 : dreamroom2024@naver.com</li>
+</ul>
+</div>
+
+<div class="sec-block">
+<h3 class="sec-title">후원혜택</h3>
+<ul class="bullets">
+<li>후원금 영수증 발급 (연말정산 소득공제용)</li>
+<li>우수·장기 후원자 표창 및 감사장 전달</li>
+<li>후원자 대상 센터 소식·행사 안내</li>
+</ul>
+</div>
+
+<div class="info-box">
+<div class="info-box-title">연말정산 소득공제 안내</div>
+<p>사회복지법인에 대한 후원금은 세법에 따라 연말정산 시 소득공제(세액공제) 혜택을 받으실 수 있습니다.<br>정확한 공제 한도와 절차는 후원 문의 또는 관할 세무서를 통해 확인해주세요.</p>
+</div>
+<p class="info-note">본 센터는 사회복지법인 및 시설 재무회계규칙을 준수하여 후원금(품)을 투명하게 모집·집행하고 있습니다.</p>
+
+<div class="sec-block" style="margin-top:44px">
+<h3 class="sec-title" style="text-align:center">후원문의</h3>
+<p style="text-align:center;font-size:14.5px;color:#33474b;margin:0 0 26px">TEL 062-264-7942 · EMAIL dreamroom2024@naver.com</p>
+<form id="donateInquiryForm" class="contact-form">
+<div class="contact-form-row">
+<label for="inqName">이름 <span aria-hidden="true">*</span></label>
+<input type="text" id="inqName" name="name" required>
+</div>
+<div class="contact-form-row">
+<label for="inqContact">연락처 (전화 또는 이메일) <span aria-hidden="true">*</span></label>
+<input type="text" id="inqContact" name="contact" required>
+</div>
+<div class="contact-form-row">
+<label for="inqMessage">문의내용 <span aria-hidden="true">*</span></label>
+<textarea id="inqMessage" name="message" rows="5" required></textarea>
+</div>
+<p class="contact-form-note" id="donateInquiryStatus" aria-live="polite">문의하기를 누르면 입력하신 내용으로 메일이 작성됩니다. 열린 메일 프로그램에서 발송 버튼을 눌러야 최종 전송됩니다.</p>
+<button type="submit" class="cta" style="border:0;cursor:pointer;width:100%;font-family:inherit">문의하기</button>
+</form>
+</div>
 </main>
 
 <!-- FOOTER -->
@@ -332,41 +356,6 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
 </div>
 <div>Copyright ⓒ 장애인평생교육원 꿈터글방 All Rights Reserved.</div>
 </footer>
-
-<script>
-(function(){
-  var buttons = document.querySelectorAll('.tab-btn');
-  var panels = {
-    greeting: document.getElementById('panel-greeting'),
-    mission: document.getElementById('panel-mission'),
-    org: document.getElementById('panel-org'),
-    corp: document.getElementById('panel-corp'),
-    facility: document.getElementById('panel-facility'),
-    way: document.getElementById('panel-way')
-  };
-  var titles = { greeting:'인사말', mission:'미션·비전·연혁', org:'조직도', corp:'운영법인안내', facility:'시설안내', way:'오시는길' };
-  var crumbTab = document.getElementById('crumbTab');
-  function activate(name){
-    if (!panels[name]) return;
-    buttons.forEach(function(btn){ btn.classList.toggle('active', btn.dataset.tab === name); });
-    Object.keys(panels).forEach(function(key){ panels[key].classList.toggle('active', key === name); });
-    crumbTab.textContent = titles[name];
-  }
-  function activateFromHash(){
-    var name = (location.hash || '').replace('#','');
-    if (panels[name]) activate(name);
-  }
-  buttons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var name = btn.dataset.tab;
-      activate(name);
-      if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
-    });
-  });
-  window.addEventListener('hashchange', activateFromHash);
-  activateFromHash();
-})();
-</script>
 <script>
 (function(){
   var siteHeader = document.querySelector('.site-header');
@@ -393,6 +382,26 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
       });
       link.addEventListener('mouseleave', function(){ highlight.style.opacity = '0'; });
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var form = document.getElementById('donateInquiryForm');
+  if (!form) return;
+  var status = document.getElementById('donateInquiryStatus');
+  var defaultStatus = status.textContent;
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    var name = document.getElementById('inqName').value.trim();
+    var contact = document.getElementById('inqContact').value.trim();
+    var message = document.getElementById('inqMessage').value.trim();
+    if (!name || !contact || !message) return;
+    var subject = encodeURIComponent('후원 문의 - ' + name);
+    var body = encodeURIComponent('이름: ' + name + '\n연락처: ' + contact + '\n\n문의내용:\n' + message);
+    window.location.href = 'mailto:dreamroom2024@naver.com?subject=' + subject + '&body=' + body;
+    status.textContent = '메일 프로그램을 열었습니다. 내용 확인 후 발송 버튼을 눌러주세요.';
+    setTimeout(function(){ status.textContent = defaultStatus; }, 6000);
   });
 })();
 </script>

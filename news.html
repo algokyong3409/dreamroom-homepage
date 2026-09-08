@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>센터소개 | 꿈터글방</title>
+<title>센터소식 | 꿈터글방</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -47,13 +47,13 @@ a{color:inherit;text-decoration:none}
 .nav-drop a{position:relative;z-index:1;display:block;padding:9px 14px!important;font-size:14px!important;font-weight:700!important;color:#33474b!important;text-shadow:none!important;white-space:nowrap;border-radius:6px}
 .nav-drop a:hover,.nav-drop a:focus-visible{color:#e02020!important}
 .nav-drop a::after{display:none!important}
-.hero{position:relative;min-height:320px;display:flex;align-items:end;background:linear-gradient(90deg,rgba(14,49,59,.38),rgba(14,49,59,.14)),url('./assets/tree-reading.png') bottom/cover;border-bottom:1px solid #e3e9e7;padding:44px max(24px,calc((100% - 1080px)/2)) 30px;color:#fff}
+.hero{position:relative;min-height:320px;display:flex;align-items:end;background:linear-gradient(90deg,rgba(14,49,59,.38),rgba(14,49,59,.14)),url('./assets/generated/music-class.png') center 32%/cover;border-bottom:1px solid #e3e9e7;padding:44px max(24px,calc((100% - 1080px)/2)) 30px;color:#fff}
 .hero small{color:#bfe0c8;font-weight:900;letter-spacing:.14em;font-size:12px}
 .hero h1{font-size:34px;margin:8px 0 12px}
 .crumb{font-size:13px;color:#cfe3e0;display:flex;align-items:center;gap:6px}
 .crumb span.sep{opacity:.6}
-.tabs{max-width:1080px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-.tab-btn{text-align:center;padding:14px 10px;background:#fff;border:1px solid #dde5e3;border-radius:2px;font-size:14px;font-weight:800;color:#4a5c60;cursor:pointer;box-shadow:0 6px 18px rgba(20,45,50,.06);transition:.15s}
+.tabs{max-width:1080px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.tab-btn{text-align:center;padding:14px 10px;background:#fff;border:1px solid #dde5e3;border-radius:2px;font-size:14.5px;font-weight:800;color:#4a5c60;cursor:pointer;box-shadow:0 6px 18px rgba(20,45,50,.06);transition:.15s}
 .tab-btn:hover{border-color:#159b9b}
 .tab-btn.active{background:#159b9b;border-color:#159b9b;color:#fff}
 .content{max-width:1080px;margin:auto;padding:52px 24px 80px}
@@ -61,25 +61,33 @@ a{color:inherit;text-decoration:none}
 .panel.active{display:block}
 .panel h2{font-size:26px;color:#153e49;margin:0 0 8px;text-align:center}
 .panel>p.lede{text-align:center;color:#647579;font-size:15px;margin:0 0 40px}
-.greeting p{font-size:16px;line-height:1.9;color:#4b5d61;max-width:720px;margin:0 auto 16px}
-.values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
-.value{padding:26px 22px;border-radius:14px;background:#f0f6f2;border:1px solid #e0e9e4}
-.value b{color:#6f9839;font-size:13px;letter-spacing:.06em}
-.value h3{font-size:17px;margin:8px 0 6px}
-.value p{margin:0;font-size:13.5px;line-height:1.7;color:#5b6c70}
-.info-table{border:1px solid #e3e9e7;border-radius:14px;overflow:hidden;max-width:720px;margin:0 auto}
-.info-row{display:grid;grid-template-columns:150px 1fr}
-.info-row+.info-row{border-top:1px solid #e3e9e7}
-.info-row dt{margin:0;padding:16px 20px;background:#f3f7f5;font-weight:800;font-size:14px;color:#2c464d;display:flex;align-items:center}
-.info-row dd{margin:0;padding:16px 20px;font-size:14px;color:#33474b;display:flex;align-items:center;line-height:1.6}
+.notice-list{border-top:2px solid #657176;max-width:760px;margin:0 auto}
+.notice-row{display:flex;justify-content:space-between;gap:16px;padding:16px 4px;border-bottom:1px solid #e5eae8;font-size:14.5px}
+.notice-row span:first-child{font-weight:600}
+.notice-row span:last-child{color:#899397;flex-shrink:0}
+.photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch}
+.photo-card{display:flex;min-width:0;flex-direction:column}
+.photo-card .t{padding:9px 12px 0;margin-top:0!important}
+.photo-card .d{padding:2px 12px 12px}
+.photo-empty-frame{display:grid;place-items:center;width:100%;aspect-ratio:4/3;background:#f7f8f8;border-bottom:1px solid #d9dfdd;color:#9aa3a5!important;font-size:14px;font-weight:600}
+.photo-pagination{display:flex;justify-content:center;gap:14px;margin:38px auto 0}
+@media(max-width:900px){.photo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.photo-pagination{gap:9px;margin-top:28px}}
+.video-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch}
+.video-card{display:flex;min-width:0;flex-direction:column}
+.video-card .t{flex:1;padding:11px 12px 13px;margin-top:0!important}
+@media(max-width:900px){.video-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+.photo-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block}
+.photo-card .t{font-size:13.5px;font-weight:700;margin-top:9px;color:#233a40}
+.photo-card .d{font-size:12px;color:#899397;margin-top:2px}
+.video-card .thumb{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#183943}
+.video-empty-frame{display:grid;place-items:center;width:100%;aspect-ratio:16/9;background:#f7f8f8;border-bottom:1px solid #d9dfdd;color:#9aa3a5!important;font-size:14px;font-weight:600}
+.video-card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.play-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:40px;height:29px;border-radius:8px;background:#e90018;display:grid;place-items:center;box-shadow:0 5px 14px rgba(0,0,0,.24)}
+.play-mark::after{content:'';border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid white;margin-left:2px}
+.video-card .t{font-size:13.5px;font-weight:700;margin-top:9px;color:#233a40}
 .empty-state{max-width:640px;margin:0 auto;text-align:center;padding:48px 24px;border:1px dashed #dbe3e1;border-radius:14px;color:#748487;font-size:14px;line-height:1.8}
-.panel.facility.active{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:center;max-width:900px;margin:0 auto}
-.facility img{width:100%;border-radius:14px;display:block}
-.facility p{font-size:14.5px;line-height:1.9;color:#4b5d61}
-.map-box{max-width:760px;margin:0 auto}
-.map-box img{width:100%;border-radius:14px;display:block;border:1px solid #e3e9e7}
-.way-info{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;margin-top:18px;font-size:14px;color:#4b5d61}
-.way-link{display:inline-block;margin-top:20px;text-align:center;width:100%;font-size:13px;font-weight:800;color:#159b9b}
 .foot{background:#fff;color:#758589;border-top:1px solid #e3e9e7;padding:28px max(24px,calc((100% - 1080px)/2));font-size:13px;line-height:1.8}
 @media(max-width:700px){
   .site-header{display:none}
@@ -88,11 +96,8 @@ a{color:inherit;text-decoration:none}
   .mobile-head .brand img{width:34px}
   .mobile-head .brand span{font-size:13px}
   .hero{min-height:190px;padding-bottom:26px}.hero h1{font-size:26px}
-  .tabs{margin-top:16px;grid-template-columns:repeat(3,1fr)}
+  .tabs{margin-top:16px;grid-template-columns:repeat(2,1fr)}
   .content{padding-top:34px}
-  .values{grid-template-columns:1fr}
-  .info-row{grid-template-columns:110px 1fr}
-  .facility{grid-template-columns:1fr}
 }
 </style>
 <link rel="stylesheet" href="./assets/subpage-alignment.css">
@@ -173,6 +178,26 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
   .prog-table,.info-grid-table{font-size:14px!important}.prog-table th,.prog-table td,.info-grid-table th,.info-grid-table td{padding:11px 10px!important}
 }
 </style>
+<style id="video-search-style">
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.video-search{max-width:930px;margin:38px auto 0}
+.video-pagination{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 10px}
+.video-page-btn{min-width:38px;height:38px;padding:0 10px;border:1px solid #cfd3d5;border-radius:6px;background:#fff;color:#777;font-size:15px;line-height:36px;text-align:center;cursor:pointer}
+.video-page-btn.active{border-color:#4285f4;background:#4285f4;color:#fff;font-weight:700}
+.video-page-btn.next{border-color:#eceeef;background:#eceeef;color:#999;font-size:15px;font-weight:700}
+.video-page-btn:disabled{cursor:not-allowed;opacity:.62}
+.video-search-form{display:grid;grid-template-columns:minmax(150px,220px) minmax(200px,1fr) 92px;gap:10px;align-items:stretch}
+.video-search-form select,.video-search-input-wrap,.video-search-submit{height:44px;border-radius:6px}
+.video-search-form select{width:100%;border:1px solid #9ca3a7;background:#fff;padding:0 30px 0 12px;color:#111;font:500 15px/1 'Noto Sans KR',sans-serif}
+.video-search-input-wrap{position:relative;display:flex;align-items:center;border:1px solid #d8dcde;background:#fff}
+.video-search-input-wrap input{width:100%;height:100%;border:0;outline:0;background:transparent;padding:0 28px 0 14px;color:#111;font:400 14px/1.4 'Noto Sans KR',sans-serif}
+.content .required-mark{position:absolute;top:50%;right:10px;transform:translateY(-50%);color:#ff6269!important;font-size:15px;font-weight:900;line-height:1}
+.video-search-submit{border:0;background:#050505;color:#fff;font:700 15px/1 'Noto Sans KR',sans-serif;cursor:pointer}
+.video-search-submit:hover,.video-search-submit:focus-visible{background:#252525}
+.video-search-status{margin:9px 2px 0!important;color:#5f6669!important;font-size:13.5px!important;text-align:right!important}
+.photo-card[hidden],.video-card[hidden],#videoSearchEmpty[hidden]{display:none!important}
+@media(max-width:700px){.video-search{margin-top:28px}.video-page-btn{min-width:34px;height:34px;font-size:13px;line-height:32px}.video-search-form{grid-template-columns:1fr}.video-search-form select,.video-search-input-wrap,.video-search-submit{height:40px}.video-search-form select{font-size:14px}.video-search-submit{font-size:14px}}
+</style>
 </head>
 <body>
 <header class="mobile-head">
@@ -241,75 +266,125 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
 
 <section class="hero">
 <div>
-<small>ABOUT KKUMTEO</small>
-<h1>센터소개</h1>
-<div class="crumb"><a href="./index.html" style="color:#cfe3e0" aria-label="홈">⌂</a><span class="sep">›</span><span>센터소개</span><span class="sep">›</span><span id="crumbTab">인사말</span></div>
+<small>CENTER NEWS</small>
+<h1>센터소식</h1>
+<div class="crumb"><a href="./index.html" style="color:#cfe3e0" aria-label="홈">⌂</a><span class="sep">›</span><span>센터소식</span><span class="sep">›</span><span id="crumbTab">공지사항</span></div>
 </div>
 </section>
 
 <div class="tabs">
-<button type="button" class="tab-btn active" data-tab="greeting">인사말</button>
-<button type="button" class="tab-btn" data-tab="mission">미션·비전·연혁</button>
-<button type="button" class="tab-btn" data-tab="org">조직도</button>
-<button type="button" class="tab-btn" data-tab="corp">운영법인안내</button>
-<button type="button" class="tab-btn" data-tab="facility">시설안내</button>
-<button type="button" class="tab-btn" data-tab="way">오시는길</button>
+<button type="button" class="tab-btn active" data-tab="notice">공지사항</button>
+<button type="button" class="tab-btn" data-tab="photo">사진갤러리</button>
+<button type="button" class="tab-btn" data-tab="video">영상갤러리</button>
+<button type="button" class="tab-btn" data-tab="press">보도자료</button>
+<button type="button" class="tab-btn" data-tab="welfare">복지정보</button>
 </div>
 
 <main class="content">
 
-<section class="panel active greeting" id="panel-greeting">
-<h2>인사말</h2>
-<p class="lede">배움이 꿈이 되는 곳, 함께 성장하는 꿈터글방입니다.</p>
-<p>장애인평생교육원 꿈터글방은 성인 장애인의 배움과 일상을 연결하는 평생교육 공간입니다. 문해·독서, 음악, 미술, 건강, 생활체육과 분반수업을 통해 각자의 속도와 가능성을 존중하는 교육을 이어갑니다.</p>
-<p>함께 배우고 서로를 격려하며, 배움의 즐거움이 자립과 참여로 이어지는 따뜻한 공동체를 만들어갑니다.</p>
-</section>
-
-<section class="panel" id="panel-mission">
-<h2>미션·비전·연혁</h2>
-<p class="lede">꿈터글방이 지향하는 가치입니다.</p>
-<div class="values">
-<div class="value"><b>MISSION</b><h3>존중하는 배움</h3><p>학습자의 특성과 속도를 존중하는 맞춤형 교육을 실천합니다.</p></div>
-<div class="value"><b>VISION</b><h3>함께하는 성장</h3><p>교사와 학습자, 지역사회가 함께 배우고 성장합니다.</p></div>
-<div class="value"><b>VALUE</b><h3>일상으로의 연결</h3><p>배운 내용을 생활과 자립, 사회 참여로 이어갑니다.</p></div>
+<section class="panel active" id="panel-notice">
+<h2>공지사항</h2>
+<p class="lede">꿈터글방의 새로운 소식을 안내해드립니다.</p>
+<div class="notice-list">
+<a class="notice-row" href="./notice-2026-2hakgi.html"><span>2026년 2학기 기초문해과정 개강 안내 (9/2~12/24)</span><span>2026-08-20</span></a>
+<a class="notice-row" href="./notice-2026-09-plan.html"><span>2026년 9월 운영계획 안내</span><span>2026-08-28</span></a>
+<a class="notice-row" href="./notice-2026-chuseok.html"><span>추석 연휴 휴관 안내 (9/22~9/25)</span><span>2026-09-01</span></a>
 </div>
-<div class="empty-state" style="margin-top:32px">설립 연혁은 준비 중입니다. 확인되는 대로 안내해드리겠습니다.</div>
 </section>
 
-<section class="panel" id="panel-org">
-<h2>조직도</h2>
-<p class="lede">꿈터글방의 운영 조직입니다.</p>
-<div class="empty-state">조직도는 준비 중입니다.<br>확인되는 대로 안내해드리겠습니다.</div>
-</section>
-
-<section class="panel" id="panel-corp">
-<h2>운영법인안내</h2>
-<p class="lede">꿈터글방을 운영하는 법인 정보입니다.</p>
-<dl class="info-table">
-<div class="info-row"><dt>운영법인</dt><dd>사회복지법인 즐거운마을</dd></div>
-<div class="info-row"><dt>기타 정보</dt><dd>준비 중입니다. 확인되는 대로 안내해드리겠습니다.</dd></div>
-</dl>
-</section>
-
-<section class="panel facility" id="panel-facility">
-<h2 style="grid-column:1/-1">시설안내</h2>
-<p class="lede" style="grid-column:1/-1">배움과 일상이 이어지는 꿈터글방의 공간입니다.</p>
-<img src="./assets/building-signage-hq.jpg" alt="꿈터글방 간판이 보이는 건물 외부 전경">
-<p>장애인평생교육원 꿈터글방은 광주광역시 북구 월동로 15(두암동)에 위치하고 있습니다. 문해·문학·미술·음악·건강교실과 검정고시반이 운영되는 교육 공간입니다.<br><br>세부 시설 규모 및 설비 안내는 준비 중이며, 확인되는 대로 안내해드리겠습니다.</p>
-</section>
-
-<section class="panel" id="panel-way">
-<h2>오시는길</h2>
-<p class="lede">꿈터글방으로 오시는 길을 안내합니다.</p>
-<div class="map-box">
-<img src="./assets/map.png" alt="장애인평생교육원 꿈터글방 위치 안내 지도">
+<section class="panel" id="panel-photo">
+<h2>사진갤러리</h2>
+<p class="lede">교육 프로그램이 진행되는 꿈터글방의 일상입니다.</p>
+<div class="photo-grid">
+<div class="photo-card"><img src="./assets/generated/literacy-class.png" alt="세상읽기 문해·독서"><div class="t">세상읽기 (문해·독서)</div><div class="d">2026-07-10</div></div>
+<div class="photo-card"><img src="./assets/generated/music-class.png" alt="음악교실"><div class="t">음악교실</div><div class="d">2026-07-15</div></div>
+<div class="photo-card"><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠"><div class="t">뉴스포츠</div><div class="d">2026-07-22</div></div>
+<div class="photo-card"><img src="./uploads/KakaoTalk_20260831_155146779.png" alt="2학기 프로그램"><div class="t">2026년 2학기 프로그램</div><div class="d">2026-08-05</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 1">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 2">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 3">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 4">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 5">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 6">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 7">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 8">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 9">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 10">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 11">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 12">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 13">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 14">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 15">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 16">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 17">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 18">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 19">사진 등록 공간</div></div>
+<div class="photo-card photo-placeholder"><div class="photo-empty-frame" aria-label="빈 사진 프레임 20">사진 등록 공간</div></div>
 </div>
-<div class="way-info">
-<span>광주광역시 북구 월동로 15(두암동)</span>
-<span>TEL 062-264-7942</span>
-<span>상담 010-5703-2730</span>
+<nav class="photo-pagination" id="photoPagination" aria-label="사진 목록 페이지"></nav>
+</section>
+
+<section class="panel" id="panel-video">
+<h2>영상갤러리</h2>
+<p class="lede">영상으로 만나는 꿈터글방의 교육 현장입니다.</p>
+<div class="video-grid" id="videoSearchGrid">
+<a class="video-card" href="#" data-member-id="dreamroom" data-author="관리자" data-content="기초문해과정 교육 소개"><div class="thumb"><img src="./assets/generated/literacy-class.png" alt="기초문해과정 소개 영상 미리보기"><span class="play-mark"></span></div><div class="t">2026년 기초문해과정 소개</div></a>
+<a class="video-card" href="#" data-member-id="dreamroom" data-author="관리자" data-content="음악교실 활동 현장"><div class="thumb"><img src="./assets/generated/music-class.png" alt="음악교실 활동 영상 미리보기"><span class="play-mark"></span></div><div class="t">함께 노래하는 음악교실</div></a>
+<a class="video-card" href="#" data-member-id="dreamroom" data-author="관리자" data-content="뉴스포츠 신체활동 교실"><div class="thumb"><img src="./assets/generated/adaptive-sports.png" alt="뉴스포츠 활동 영상 미리보기"><span class="play-mark"></span></div><div class="t">신나는 뉴스포츠 교실</div></a>
+<a class="video-card" href="#" data-member-id="dreamroom" data-author="관리자" data-content="꿈터글방 배움과 일상 소개"><div class="thumb"><img src="./assets/generated/hero-learning.png" alt="꿈터글방 소개 영상 미리보기"><span class="play-mark"></span></div><div class="t">배움으로 이어지는 우리의 하루</div></a>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 1">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 2">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 3">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 4">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 5">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 6">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 7">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 8">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 9">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 10">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 11">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 12">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 13">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 14">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 15">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 16">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 17">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 18">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 19">영상 등록 공간</div></div>
+<div class="video-card video-placeholder" data-member-id="" data-author="" data-content=""><div class="video-empty-frame" aria-label="빈 영상 프레임 20">영상 등록 공간</div></div>
 </div>
-<a class="way-link" href="./location.html">전체 지도 크게 보기 →</a>
+<div id="videoSearchEmpty" class="empty-state" hidden>검색 결과가 없습니다.<br>다른 제목으로 검색해 주세요.</div>
+<div class="video-search" role="search" aria-label="영상 검색">
+<nav class="video-pagination" id="videoPagination" aria-label="영상 목록 페이지"></nav>
+<form class="video-search-form" id="videoSearchForm">
+<label class="sr-only" for="videoSearchField">검색 기준</label>
+<select id="videoSearchField" aria-label="검색 기준">
+<option value="title">제목</option>
+<option value="titleContent">제목 + 내용</option>
+<option value="memberId">회원 아이디</option>
+<option value="author">글쓴이</option>
+</select>
+<label class="video-search-input-wrap" for="videoSearchInput">
+<span class="sr-only">검색어</span>
+<input id="videoSearchInput" type="search" placeholder="검색어를 입력하세요" autocomplete="off">
+<span class="required-mark" aria-hidden="true">*</span>
+</label>
+<button class="video-search-submit" type="submit">검색</button>
+</form>
+<p id="videoSearchStatus" class="video-search-status" aria-live="polite">전체 4개 영상</p>
+</div>
+</section>
+
+<section class="panel" id="panel-press">
+<h2>보도자료</h2>
+<p class="lede">꿈터글방을 다룬 언론 보도를 모아 안내해드립니다.</p>
+<div class="empty-state">등록된 보도자료가 없습니다.<br>채널 확대 후 순차적으로 게시됩니다.</div>
+</section>
+
+<section class="panel" id="panel-welfare">
+<h2>복지정보</h2>
+<p class="lede">장애인 복지와 관련된 유용한 정보를 안내해드립니다.</p>
+<div class="empty-state">복지정보 게시판은 준비 중입니다.<br>콘텐츠 확보 후 순차적으로 게시됩니다.</div>
 </section>
 
 </main>
@@ -337,14 +412,13 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
 (function(){
   var buttons = document.querySelectorAll('.tab-btn');
   var panels = {
-    greeting: document.getElementById('panel-greeting'),
-    mission: document.getElementById('panel-mission'),
-    org: document.getElementById('panel-org'),
-    corp: document.getElementById('panel-corp'),
-    facility: document.getElementById('panel-facility'),
-    way: document.getElementById('panel-way')
+    notice: document.getElementById('panel-notice'),
+    photo: document.getElementById('panel-photo'),
+    video: document.getElementById('panel-video'),
+    press: document.getElementById('panel-press'),
+    welfare: document.getElementById('panel-welfare')
   };
-  var titles = { greeting:'인사말', mission:'미션·비전·연혁', org:'조직도', corp:'운영법인안내', facility:'시설안내', way:'오시는길' };
+  var titles = { notice:'공지사항', photo:'사진갤러리', video:'영상갤러리', press:'보도자료', welfare:'복지정보' };
   var crumbTab = document.getElementById('crumbTab');
   function activate(name){
     if (!panels[name]) return;
@@ -365,6 +439,45 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
   });
   window.addEventListener('hashchange', activateFromHash);
   activateFromHash();
+})();
+</script>
+<script>
+(function(){
+  var form = document.getElementById('videoSearchForm');
+  var field = document.getElementById('videoSearchField');
+  var input = document.getElementById('videoSearchInput');
+  var pagination = document.getElementById('videoPagination');
+  var status = document.getElementById('videoSearchStatus');
+  var empty = document.getElementById('videoSearchEmpty');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#videoSearchGrid .video-card'));
+    var realCards = cards.filter(function(card){ return !card.classList.contains('video-placeholder'); });
+var pageSize = 12;
+  var page = 1;
+  var keyword = '';
+  if (!form || !field || !input || !pagination || !status || !empty) return;
+  function searchableText(card){
+    var title = (card.querySelector('.t') || card).textContent;
+    var values = { title:title, titleContent:title+' '+(card.dataset.content||''), memberId:card.dataset.memberId||'', author:card.dataset.author||'' };
+    return (values[field.value] || '').toLocaleLowerCase('ko-KR');
+  }
+  function render(){
+    var matches = keyword ? realCards.filter(function(card){ return searchableText(card).indexOf(keyword) !== -1; }) : cards;
+    var totalPages = Math.max(1, Math.ceil(matches.length / pageSize));
+    if (page > totalPages) page = totalPages;
+    cards.forEach(function(card){ card.hidden = true; });
+    matches.slice((page-1)*pageSize, page*pageSize).forEach(function(card){ card.hidden = false; });
+    pagination.innerHTML = '';
+    for (var i=1;i<=totalPages;i++){
+      var button = document.createElement('button'); button.type='button'; button.className='video-page-btn'+(i===page?' active':''); button.textContent=i; button.setAttribute('aria-label',i+'페이지'); button.setAttribute('aria-current',i===page?'page':'false');
+      button.addEventListener('click',(function(target){return function(){page=target;render();}})(i)); pagination.appendChild(button);
+    }
+    var next = document.createElement('button'); next.type='button'; next.className='video-page-btn next'; next.textContent='»'; next.setAttribute('aria-label','다음 페이지'); next.disabled=page>=totalPages; next.addEventListener('click',function(){if(page<totalPages){page++;render();}}); pagination.appendChild(next);
+    empty.hidden = matches.length !== 0;
+    status.textContent = keyword ? '검색 결과 '+matches.length+'개 · '+page+'/'+totalPages+'페이지' : '등록 영상 '+realCards.length+'개 · '+page+'/'+totalPages+'페이지';
+  }
+  form.addEventListener('submit',function(event){event.preventDefault();keyword=input.value.trim().toLocaleLowerCase('ko-KR');page=1;render();});
+  field.addEventListener('change',function(){if(keyword){keyword=input.value.trim().toLocaleLowerCase('ko-KR');page=1;render();}});
+  render();
 })();
 </script>
 <script>
@@ -396,6 +509,30 @@ body{color:var(--detail-ink);font-size:16px;line-height:1.7}
   });
 })();
 </script>
+<script>
+(function(){
+  var grid=document.querySelector('#panel-photo .photo-grid');
+  var pagination=document.getElementById('photoPagination');
+  if(!grid||!pagination)return;
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.photo-card'));
+  var pageSize=12,page=1;
+  function render(){
+    cards.forEach(function(card,index){card.hidden=index<(page-1)*pageSize||index>=page*pageSize;});
+    pagination.innerHTML='';
+    for(var i=1;i<=2;i++){var button=document.createElement('button');button.type='button';button.className='video-page-btn'+(i===page?' active':'');button.textContent=i;button.setAttribute('aria-label',i+'페이지');button.setAttribute('aria-current',i===page?'page':'false');button.addEventListener('click',(function(target){return function(){page=target;render();};})(i));pagination.appendChild(button);}
+    var next=document.createElement('button');next.type='button';next.className='video-page-btn next';next.textContent='»';next.setAttribute('aria-label','다음 페이지');next.disabled=page===2;next.addEventListener('click',function(){if(page<2){page++;render();}});pagination.appendChild(next);
+  }
+  render();
+})();
+</script>
 <script src="./assets/admin-login.js" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+

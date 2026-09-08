@@ -1,0 +1,10 @@
+dist/
+scratch/
+.openai/
+.thumbnail
+.image-slots.state.json
+*.tar.gz
+꿈터글방 홈페이지.dc.html
+*-상단최종.png
+*-정렬최종.png
+*-최종*.png
